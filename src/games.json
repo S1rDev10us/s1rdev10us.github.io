@@ -1,7 +1,11 @@
 [
 	{
-		"name":"Outer wilds",
-		"description":"Outer Wilds is a first-person space exploration game where you uncover the mysteries of a solar system stuck in an endless time loop. Blast off into a fully physically simulated cosmos and seamlessly journey from one planet to the next as you search for the answers hidden in the unknown.",
-		"image":"https://www.mobiusdigitalgames.com/uploads/4/7/3/2/47328935/editor/logo2_1.png?1645003381"
+		"name": "Outer wilds",
+		"description": "Outer Wilds is a first-person space exploration game where you uncover the mysteries of a solar system stuck in an endless time loop. Blast off into a fully physically simulated cosmos and seamlessly journey from one planet to the next as you search for the answers hidden in the unknown.",
+		"image": "https://www.mobiusdigitalgames.com/uploads/4/7/3/2/47328935/editor/logo2_1.png?1645003381"
+	},
+	{
+		"name":"Another game!",
+		"description":"This is another game that I most certainly, definitely made!"
 	}
 ]
