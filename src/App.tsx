@@ -8,5 +8,5 @@ const router = createHashRouter(createRoutesFromElements(
 ))
 export default function App() {
 
-	return (<RouterProvider router={undefined} />)
+	return (<RouterProvider router={router} />)
 }
