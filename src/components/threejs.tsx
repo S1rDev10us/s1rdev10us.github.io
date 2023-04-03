@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from "react"
 
-import { Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight, AmbientLight, ACESFilmicToneMapping, sRGBEncoding, PCFShadowMap, Euler, Vector3, Matrix4, Light } from 'three';
+import { Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight, AmbientLight, ACESFilmicToneMapping, sRGBEncoding, PCFShadowMap, Euler, Vector3, Matrix4, Light, CubicBezierCurve } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 /*class BetterOrbit extends OrbitControls {
@@ -97,24 +97,26 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 
 		const upLight = new DirectionalLight(0x242424, 1)
 		upLight.position.set(1, 2, 1.5)
-		upLight.castShadow=true;
-		upLight.shadow.mapSize.width=500;
-		upLight.shadow.mapSize.height=500;
-		upLight.shadow.camera.near=0.1;
-		upLight.shadow.camera.far=50;
+		upLight.castShadow = true;
+		upLight.shadow.mapSize.width = 500;
+		upLight.shadow.mapSize.height = 500;
+		upLight.shadow.camera.near = 0.1;
+		upLight.shadow.camera.far = 50;
 		scene.add(upLight);
 
 		const softLight = new AmbientLight(0x242424, 0.2)
 		scene.add(softLight);
 
-		var variables:{[name:string]:any,deltaTime:number} = {deltaTime:0};
+		var variables: { [name: string]: any, deltaTime: number } = { deltaTime: 0 };
+
+		var initialCameraPos
 
 		const controls = new OrbitControls(camera, canvas.current);
 		controls.autoRotate = true;
 		controls.enablePan = false;
 		controls.enableZoom = false;
-		controls.rotateSpeed=2;
-		controls.enableDamping=true;
+		controls.rotateSpeed = 2;
+		controls.enableDamping = true;
 
 		camera.rotation.x = 0
 		camera.rotation.y = 0
@@ -122,13 +124,21 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 
 		var aspect: number = 1;
 
+		const startPosition = new Vector3(1, 1, 1);
+		camera.position.x = startPosition.x;
+		camera.position.y = startPosition.y;
+		camera.position.z = startPosition.z;
+		camera.lookAt(new Vector3())
+
 		var previousTimeStamp: number;
+		let time = 0;
 		function animate(timestamp: number) {
-			
 			let deltaTime = timestamp - (previousTimeStamp ?? timestamp)
-			variables.deltaTime=deltaTime;
+			time += deltaTime;
+			variables.deltaTime = deltaTime;
 
 			previousTimeStamp = timestamp;
+
 			if (!canvas.current) {
 				renderer.dispose()
 				upLight.dispose();
@@ -141,7 +151,12 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 				renderer.setSize(canvas.current.width, canvas.current.height);
 			}
 			input.updateScene(scene, renderer, camera, variables);
-			controls.update();
+			if (time <= 1000) {
+				const rotSpeed = -Math.sqrt(1 - Math.pow(time / 3000 - 1, 1)) * Math.PI * 200;
+				camera.position.x = startPosition.x * Math.cos(rotSpeed) + startPosition.z * Math.sin(rotSpeed);
+				camera.position.x = startPosition.z * Math.cos(rotSpeed) - startPosition.x * Math.sin(rotSpeed);
+				camera.lookAt(new Vector3())
+			} else controls.update();
 
 			renderer.render(scene, camera);
 			requestAnimationFrame(animate);
