@@ -44,3 +44,27 @@
 #navbar>:first-child:hover::before{
 	border-color: var(--navbar-secondary-highlight);
 }
+.three-canvas{
+	/* width: 100% !important; */
+	width: 500px;
+	position: relative;
+	z-index: -0;
+	height: 500px;
+}
+.three-canvas-holder{
+	height: 100px;
+}
+/* .three-canvas::after{
+	content: 'hi';
+	display: block;
+	width: 10px;
+	position: static;
+	background-color: blue;
+} */
+.three-canvas-holder >div{
+	position: relative;
+	top: -300px;
+	pointer-events: none;
+	touch-action: none;
+	z-index: 1;
+}
