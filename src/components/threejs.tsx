@@ -72,7 +72,8 @@ export default function ThreeJsCanvas(input: {
 		camera.rotation.z = 0
 
 		var aspect: number = 1;
-		const startPosition = new Vector3(distance, 1, distance);
+		const startPosition = new Vector3(distance, 5, distance);
+		const endY=1;
 		// const startPosition = new Vector3(20, 1, 20);
 
 		camera.position.copy(startPosition);
@@ -98,7 +99,7 @@ export default function ThreeJsCanvas(input: {
 			if (time <= 1500) {
 				const rotSpeed = -Math.sqrt(1 - Math.pow(time / 2000 - 1, 4)) * Math.PI * 5;
 				const heightPercent = Math.sqrt(1 - Math.pow(time / 1500 - 1, 2)) * 100;
-				camera.position.y = 2 - (2 - startPosition.y) * (heightPercent / 100);
+				camera.position.y = startPosition.y - (startPosition.y - endY) * (heightPercent / 100);
 				camera.position.x = startPosition.x * Math.cos(rotSpeed) + startPosition.z * Math.sin(rotSpeed);
 				camera.position.z = startPosition.z * Math.cos(rotSpeed) - startPosition.x * Math.sin(rotSpeed);
 				camera.lookAt(new Vector3())
