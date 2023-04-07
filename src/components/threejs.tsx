@@ -1,10 +1,16 @@
-import React, { ReactNode, createRef, useEffect } from "react"
+import React, { ReactNode, useEffect } from "react"
 import './components.css';
-import { Scene, PerspectiveCamera, WebGLRenderer, DirectionalLight, AmbientLight, ACESFilmicToneMapping, sRGBEncoding, PCFShadowMap, Euler, Vector3, Matrix4, Light, CubicBezierCurve } from 'three';
+import { Scene, WebGLRenderer, AmbientLight, ACESFilmicToneMapping, sRGBEncoding, PCFShadowMap, Vector3, OrthographicCamera } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { useRef } from "react";
 import { useCallback } from "react";
-export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, variables: { [name: string]: any }) => void, setupScene: (scene: THREE.Scene, renderer: THREE.WebGLRenderer, camera: THREE.PerspectiveCamera, variables: { [name: string]: any }) => void, random?: number ,children:ReactNode}) {
+export default function ThreeJsCanvas(input: {
+	updateScene: (scene: THREE.Scene, renderer: THREE.WebGLRenderer, camera: THREE.Camera, variables: { [name: string]: any }) => void,
+	setupScene: (scene: THREE.Scene, renderer: THREE.WebGLRenderer, camera: THREE.Camera, variables: { [name: string]: any }) => void,
+	random?: number,
+	children: ReactNode
+}) {
+
 	const renderer = useRef<WebGLRenderer>();
 	const id = `THREEJSCanvas${new Date().getTime()}`;
 	const canvas = React.createRef<HTMLCanvasElement>();
@@ -16,9 +22,16 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 	}, [canvas.current?.clientWidth, canvas.current?.clientHeight])
 
 	useEffect(() => {
+
+		const distance = 1.5;
+
 		if (!canvas.current) return;
 		const scene = new Scene();
-		const camera = new PerspectiveCamera(75, canvas.current.clientWidth / canvas.current.clientHeight, 0.1, 1000);
+		// const camera = new PerspectiveCamera(75, canvas.current.clientWidth / canvas.current.clientHeight, 0.1, 1000);
+		const camera = new OrthographicCamera(-distance, distance, distance, -distance);
+
+		// camera.
+		// camera.e
 		// camera.position.set(0, 0, 0);
 
 		renderer.current = new WebGLRenderer({ canvas: canvas.current, antialias: true });
@@ -46,14 +59,12 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 
 		var variables: { [name: string]: any, deltaTime: number } = { deltaTime: 0 };
 
-		var initialCameraPos
-
 		const controls = new OrbitControls(camera, canvas.current);
 		controls.autoRotate = true;
 		controls.enablePan = false;
 		controls.enableZoom = false;
 		controls.rotateSpeed = 4;
-		
+
 		controls.enableDamping = true;
 
 		camera.rotation.x = 0
@@ -61,11 +72,9 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 		camera.rotation.z = 0
 
 		var aspect: number = 1;
-
-		const distance=1.5;
-		const startPosition = new Vector3(distance, 0.8, distance);
+		const startPosition = new Vector3(distance, 1, distance);
 		// const startPosition = new Vector3(20, 1, 20);
-		
+
 		camera.position.copy(startPosition);
 
 		camera.lookAt(new Vector3())
@@ -103,7 +112,7 @@ export default function ThreeJsCanvas(input: { updateScene: (scene: THREE.Scene,
 		input.setupScene(scene, renderer.current, camera, variables);
 		requestAnimationFrame(animate);
 		console.log("creating")
-		window.onresize=() => { handleResize(canvas.current!.parentElement!.clientWidth, 500) };
+		window.onresize = () => { handleResize(canvas.current!.parentElement!.clientWidth, 500) };
 	})
 	return (<div className="three-canvas-holder">{exportCanvas}<div>{input.children}</div></div>)
 }

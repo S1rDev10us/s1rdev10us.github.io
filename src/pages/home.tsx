@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh, Color, MeshPhysicalMaterial, Plane, Vector3, PlaneGeometry } from "three";
+import { Scene, WebGLRenderer, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh, Color, MeshPhysicalMaterial, Plane, Vector3, PlaneGeometry, Camera } from "three";
 import ThreeJsCanvas from "../components/threejs";
 import title from "../main";
 
@@ -6,14 +6,14 @@ export default function Root() {
 	console.log("root")
 	title("Homepage");
 	const THREEScene = (() => ThreeJsCanvas({
-		updateScene: function (scene: Scene, renderer: WebGLRenderer, camera: PerspectiveCamera, variables: { [name: string]: any }): void {
+		updateScene: function (scene: Scene, renderer: WebGLRenderer, camera: Camera, variables: { [name: string]: any }): void {
 			// variables.cube.rotation.x += 0.01;
 			// variables.cube.rotation.z += 0.01;
 			// variables.cube.rotation.y += 0.01;
 			// console.log("updateLoop");
 			// throw new Error("Function not implemented.");
 		},
-		setupScene: function (scene: Scene, renderer: WebGLRenderer, camera: PerspectiveCamera, variables: { [name: string]: any }): void {
+		setupScene: function (scene: Scene, renderer: WebGLRenderer, camera: Camera, variables: { [name: string]: any }): void {
 			const geometry = new BoxGeometry(1, 1, 1);
 			const material = new MeshPhysicalMaterial({ color: 0xaaaa11 })
 			const cube = new Mesh(geometry, material);
@@ -34,7 +34,7 @@ export default function Root() {
 			camera.position.z = 2;
 			// throw new Error("Function not implemented.");
 		},
-		children:<h1>Welcome to my website!</h1>
+		children: <h1>Welcome to my website!</h1>
 	}))
 	return (<div>
 		<THREEScene />

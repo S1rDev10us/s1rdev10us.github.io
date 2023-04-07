@@ -22,7 +22,9 @@
 	
 	color:var(--navbar-text);
 }
-
+#navbar>*.navbar-selected{
+	background-color: var(--navbar-secondary-highlight);
+}
 #navbar>*:hover {
 	background-color: var(--navbar-highlight);
 	color:var(--navbar-text-highlight);
@@ -63,7 +65,7 @@
 } */
 .three-canvas-holder >div{
 	position: relative;
-	top: -300px;
+	top: -200px;
 	pointer-events: none;
 	touch-action: none;
 	z-index: 1;

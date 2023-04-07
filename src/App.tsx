@@ -3,16 +3,12 @@ import Home from './pages/home';
 import Error from './pages/error'
 import Games from './pages/games';
 import './App.css'
+import { ReactNode } from 'react';
+import Navbar from './components/navbar';
 
-const router = createHashRouter(createRoutesFromElements(
-	<Route path='/'>
-		<Route index element={<Home />} />
-		<Route path='games' element={<Games />} />
-		<Route path='*' element={<Error />} />
-
-	</Route>
-
-))
-export default function App() {
-	return (<RouterProvider router={router} />)
+export default function App(input: { children: ReactNode }) {
+	return <>
+		<Navbar />
+		{input.children}
+	</>
 }
