@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {name} from './data.json';
-import Navbar from './components/navbar';
 import { createHashRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Games from './pages/games';
 import Home from './pages/home';

@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+		/*
         var doc = document.getElementById('htmlbody');
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -19,7 +20,9 @@
             }
         }
         xhttp.open("GET", "index.html", true);
-        xhttp.send();
+        xhttp.send();*/
+		
+		document.location=document.location.toString().replace(`${location.protocol}//${location.host}/`,`${location.protocol}//${location.host}/#`)
     </script>
 </body>
 </html>
