@@ -16,10 +16,12 @@
 	justify-content: center;
 	flex-direction: row;
 	flex-flow: row;
-	font-size: 2em;
+	font-size: 32px;
+	padding: 10px 0;
+	place-content: 50%;
 }
 #navbar>*{
-	
+	vertical-align: middle;
 	color:var(--navbar-text);
 }
 #navbar>*.navbar-selected{
