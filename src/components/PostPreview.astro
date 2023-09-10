@@ -1,0 +1,104 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Icon from "./Icon";
+import Countdown from "./Countdown.astro";
+import { isOnline } from "../scripts/data";
+
+export type Props = CollectionEntry<"posts">;
+
+const { data, slug } = Astro.props;
+---
+
+<div
+	class="card mt-2"
+	style="width: 18rem;"
+>
+	{
+		data.draft ? (
+			<div class="position-absolute top-0 end-0 m-0">
+				<svg
+					style="width: min-content; height: min-content;"
+					xmlns="http://www.w3.org/2000/svg"
+					width="100"
+					height="30"
+					viewBox="0 0 100 30"
+				>
+					<text
+						y="30"
+						x="0"
+						style="position:absolute; top:0;stroke: black; fill: red; stroke-width: 1.5px; font-size: 30px;"
+					>
+						DRAFT
+					</text>
+				</svg>
+			</div>
+		) : undefined
+	}
+	{
+		data.thumbnail && isOnline() ? (
+			<img
+				src={data.thumbnail}
+				class="card-img-top border-bottom"
+				alt=""
+			/>
+		) : undefined
+	}
+	<div class="card-body">
+		<h5 class="card-title">{data.title}</h5>
+		{
+			data.description ? (
+				<div class="card-text">{data.description}</div>
+			) : undefined
+		}
+
+		<div class="row mt-1">
+			<div class="col-auto">
+				<a
+					href={`/post/${slug}`}
+					class="btn btn-primary btn-sm"
+					>View post</a
+				>
+			</div>
+			<div class="col-auto">
+				{
+					data.source ? (
+						<a
+							href={data.source.url}
+							title={data.source.title}
+							class="btn btn-primary btn-sm"
+						>
+							{data.source.title}
+							<small>
+								<Icon iconName="box-arrow-up-right" />
+							</small>
+						</a>
+					) : undefined
+				}
+			</div>
+		</div>
+	</div>
+	<div class="card-footer text-center text-body-secondary">
+		<div class="row align-items-center">
+			<div class="col border-end">
+				{
+					+data.editDate != +data.pubDate ? (
+						<div class="row border-bottom">
+							<div class="col">
+								Edited
+								<Countdown date={data.editDate} />
+							</div>
+						</div>
+					) : undefined
+				}
+				<div class="row">
+					<div class="col">
+						Released <Countdown date={data.pubDate} />
+					</div>
+				</div>
+			</div>
+			<div class="col-auto border-start">
+				{Intl.DateTimeFormat("en-UK").format(data.pubDate)}
+			</div>
+		</div>
+	</div>
+</div>

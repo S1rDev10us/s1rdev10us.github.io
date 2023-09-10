@@ -1,0 +1,64 @@
+---
+import Icon from "./Icon";
+import { name, getStats } from "../scripts/data";
+---
+
+<div class="m-4 mx-2">
+	<div
+		class="card shadow-lg"
+		style="overflow: hidden;"
+	>
+		<div class="row g-0">
+			<div class="col-md-4">
+				<Icon
+					iconName="logo"
+					className="img-fluid"
+					rounded={false}
+				/>
+			</div>
+			<div
+				class="col gradient-background"
+				style=""
+			>
+				<div class="card-body text-center pt-1">
+					<h2 class="card-title text-start">{name}</h2>
+					<p class="card-title text-start">Game developer and youtuber</p>
+
+					<div class="card-text">
+						<div class="row">
+							<div class="col">
+								<div class="row justify-content-center">
+									{
+										// typeof v.value == "number"
+										// 	? `text-shadow: 0 0 0.2rem hsl(${
+										// 			(v.value * 1) % 360
+										// 	  },100%,50%);`
+										// 	: undefined
+										(await getStats()).map((v) => (
+											<div class="col border-top">
+												<h6>
+													{typeof v.value == "number"
+														? Intl.NumberFormat("en-UK", {
+																notation: "compact",
+																maximumFractionDigits: 1,
+														  }).format(v.value)
+														: v.value}
+												</h6>
+												<h6>{v.name}</h6>
+											</div>
+										))
+									}
+								</div>
+								<div class="row">
+									<small class="text-body-secondary border-top">
+										(This may not be up to date)
+									</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

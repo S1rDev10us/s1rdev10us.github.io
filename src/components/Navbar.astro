@@ -1,0 +1,133 @@
+---
+import { capitaliseWords } from "../lib";
+import Icon from "../components/Icon";
+import ThemePicker from "./ThemePicker.astro";
+import { name, paths } from "../scripts/data";
+---
+
+<div
+	class="sticky-top z-4"
+	style="backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);"
+>
+	<nav
+		class="navbar navbar-expand-md bg-body-tertiary border-bottom opacity-75"
+	>
+		<div class="container-fluid">
+			<a
+				class="navbar-brand my-auto"
+				href="/"
+			>
+				<Icon
+					className="img-fluid"
+					iconName="logo"
+					alt={name}
+					width={39}
+					height={39}
+				/>
+				{name}
+			</a>
+			<button
+				class="navbar-toggler my-auto"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#headerSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div
+				class="collapse navbar-collapse"
+				id="headerSupportedContent"
+			>
+				<ul
+					class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll"
+					style="--bs-scroll-height: 50vh;"
+				>
+					{
+						paths.map((v) => (
+							<li class="nav-item my-auto">
+								<a
+									class:list={[
+										"nav-link",
+										"active",
+										"link-offset-2",
+										"link-offset-3-hover",
+										"link-underline-opacity-50",
+										"link-underline-opacity-100-hover",
+										"link-body-emphasis",
+									]}
+									style="text-decoration: underline; transition: text-underline-offset 0.25s;"
+									href={v.path}
+								>
+									{capitaliseWords(v.name)}
+								</a>
+							</li>
+						))
+					}
+					<li>
+						<hr />
+					</li>
+					<li class="nav-item my-auto">
+						<ThemePicker />
+						<span
+							class="dark-invisible"
+							data-bs-toggle="tooltip"
+							data-bs-title="This site was designed with dark mode in mind because I am a dark mode user. Light mode should work but may be less functional or have less styling"
+						>
+							<Icon iconName="exclamation-triangle" />
+						</span>
+					</li>
+					<li class="nav-item my-auto">
+						<nav
+							aria-label="breadcrumb"
+							class="col-auto flex-row"
+						>
+							<ol
+								class="breadcrumb my-0 ps-2 py-2"
+								aria-label="breadcrumb"
+								style="flex-wrap: nowrap;"
+							>
+								{
+									Astro.url.pathname.split("/").map((v, i, a) => {
+										if (v == "") return undefined;
+										let u = "";
+										for (const path of a.slice(0, i + 1)) {
+											if (path == "") continue;
+											u += "/" + path;
+										}
+										const active = i != a.length - 1;
+										return (
+											<li
+												class:list={[
+													"breadcrumb-item",
+													"pe-2",
+													{
+														active,
+													},
+												]}
+												style="flex-wrap: nowrap; display: flex;"
+											>
+												{!active ? (
+													<div class="link-secondary">{capitaliseWords(v)}</div>
+												) : (
+													<a
+														class="link-body-emphasis"
+														href={u}
+													>
+														{capitaliseWords(v)}
+													</a>
+												)}
+											</li>
+										);
+									})
+								}
+							</ol>
+						</nav>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>

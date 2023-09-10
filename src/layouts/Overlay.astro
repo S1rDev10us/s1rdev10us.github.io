@@ -1,0 +1,49 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { MarkdownLayoutProps, MDXLayoutProps } from "astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import type { postScheme } from "../content/config";
+import type { z } from "zod";
+import { name } from "../scripts/data";
+
+interface BaseProps {
+	title: string;
+}
+type BP<T extends Record<string, any>> =
+	| T
+	| MarkdownLayoutProps<T>
+	| MDXLayoutProps<T>;
+
+export type Props = BP<BaseProps | z.input<typeof postScheme>>;
+
+const props = Astro.props;
+const title =
+	(
+		("title" in props ? props.title : props.frontmatter.title) ??
+		"Title missing, please contact owner"
+	).trim() + ` | ${name}`;
+---
+
+<BaseLayout theme="dark">
+	<title slot="head">
+		{title}
+	</title>
+
+	<!-- Insert navbar here-->
+
+	<Navbar slot="before-content" />
+
+	<div class="container min-vh-100">
+		<div class="row align-items-start">
+			<div class="col">
+				<main class:list={["px-3", "py-2"]}>
+					<slot />
+				</main>
+			</div>
+		</div>
+	</div>
+	<!-- Insert footer here -->
+
+	<Footer slot="after-content"><slot name="footer-content" /></Footer>
+</BaseLayout>

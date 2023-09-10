@@ -1,0 +1,67 @@
+---
+import { Theme } from "../scripts/themes";
+import { themes } from "../scripts/data";
+import Icon from "./Icon";
+
+function hideThemes(theme: "auto" | "light" | "dark") {
+	return `window.hideThemes('${theme}');`;
+}
+---
+
+<div
+	class="dropstart btn-group"
+	style="padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-y);"
+>
+	<style is:global>
+		.remove-before::before,
+		.remove-after::after {
+			display: none !important;
+		}
+		.theme-toggler-inactive {
+			display: none;
+		}
+	</style>
+	<button
+		class="btn-sm btn btn-secondary dropdown-toggle remove-after remove-before"
+		type="button"
+		title="Theme Picker"
+		data-bs-toggle="dropdown"
+		aria-expanded="false"
+	>
+		{
+			themes.map((v) => (
+				<div
+					class:list={[`theme-toggler-${v.id}`, "theme-toggler"]}
+					style={`display: ${v.id == Theme.AUTO ? "inherit" : "none"};`}
+				>
+					<Icon iconName={v.icon} />
+				</div>
+			))
+		}
+		<!-- Dropdown button -->
+	</button>
+	<ul class="dropdown-menu">
+		{
+			themes.map((v) => (
+				<>
+					<li>
+						<button
+							class:list={[
+								"dropdown-item",
+								"theme-toggler-choice",
+								`theme-toggler-choice-${v.id}`,
+							]}
+							type="button"
+							onclick={hideThemes(v.id)}
+						>
+							<Icon iconName={v.icon} />
+							&nbsp;{v.desc}
+						</button>
+					</li>
+				</>
+			))
+		}
+	</ul>
+
+	<script src="../scripts/themes.ts"></script>
+</div>

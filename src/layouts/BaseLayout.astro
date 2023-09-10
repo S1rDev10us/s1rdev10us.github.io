@@ -1,0 +1,127 @@
+---
+import logo from "../assets/logo.png";
+import { images } from "../components/Icon";
+
+import { isOnline } from "../scripts/data";
+
+export interface Props {
+	theme: "dark" | "light";
+}
+const { theme } = Astro.props;
+const online = import.meta.env.PROD || isOnline();
+---
+
+<!DOCTYPE html>
+<html
+	lang="en-UK"
+	data-bs-theme={theme}
+>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- "charset" meta element should be the first thing in <head> -->
+		<script>
+			console.log(
+				"%cHELLO THERE",
+				"background: black; color: red; font-size:4.5rem;"
+			);
+			console.log(
+				"%cSo, you fancied having a look at my website",
+				"background: black; color: red; font-size:2rem;"
+			);
+			console.log(
+				"%cFair enough I guess\nIf you find any bugs could you report them?",
+				"background: black; color: green; font-size:1rem;"
+			);
+		</script>
+		<!-- Default bootstrap -->
+		<link
+			rel="stylesheet"
+			href={online
+				? "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+				: "/node_modules/bootstrap/dist/css/bootstrap.css"}
+			crossorigin={online ? "anonymous" : undefined}
+		/>
+		<link
+			rel="stylesheet"
+			href={online
+				? "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+				: "/node_modules/bootstrap-icons/font/bootstrap-icons.css"}
+			crossorigin={online ? "anonymous" : undefined}
+		/>
+		<link
+			rel="stylesheet"
+			href="/src/styles/global.css"
+		/>
+		<script
+			src={online
+				? "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+				: "/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"}
+			crossorigin={online ? "anonymous" : undefined}
+		></script>
+		<script src="../scripts/tooltips.ts"></script>
+
+		<link
+			rel="preload"
+			as="image"
+			href={images.logo}
+		/>
+		<base href={Astro.url.origin} />
+
+		<!-- Meta -->
+
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
+		<link
+			rel="icon"
+			href={logo}
+		/>
+
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="RSS"
+			href="/rss"
+		/>
+
+		<!-- Head slot -->
+		<slot name="head" />
+	</head>
+	<body>
+		{
+			import.meta.env.DEV ? (
+				<div
+					class="position-fixed top-0 end-0 m-0"
+					style="z-index: 10000; width: fit-content; padding-right: 201px;"
+				>
+					<svg
+						class="e-0 position-absolute"
+						style="width: min-content; height: min-content;"
+						xmlns="http://www.w3.org/2000/svg"
+						width="201"
+						height="30"
+						viewBox="0 0 201 30"
+					>
+						<text
+							y="30"
+							style="position:absolute; right:0; top:0;stroke: black; fill: red; stroke-width: 1.5px; font-size: 30px;"
+						>
+							DEVELOPMENT
+						</text>
+					</svg>
+				</div>
+			) : undefined
+		}
+		<!-- Before content slot -->
+		<slot name="before-content" />
+		<!-- Content -->
+		<slot />
+		<!-- After content slot -->
+		<slot name="after-content" />
+	</body>
+</html>

@@ -1,0 +1,156 @@
+---
+import { range } from "../lib";
+import { getPostCollectionLength } from "../scripts/data";
+import Icon from "./Icon";
+export interface Props {
+	pageNumber: number;
+}
+const { pageNumber } = Astro.props;
+
+const numberOfPostPages = await getPostCollectionLength();
+
+const directionPages = { before: 2, after: 2 };
+if (pageNumber < directionPages.before + 1) {
+	directionPages.after += directionPages.before - pageNumber;
+	directionPages.before = pageNumber - 1;
+}
+if (directionPages.after + pageNumber >= numberOfPostPages) {
+	directionPages.after = Math.min(
+		numberOfPostPages - pageNumber,
+		directionPages.after
+	);
+}
+
+const isFirst = pageNumber == 1;
+const isLast = numberOfPostPages == pageNumber;
+---
+
+<nav
+	aria-label="Post navigation"
+	class="mx-auto mt-2"
+>
+	<ul class="pagination justify-content-center">
+		<li class:list={["page-item", { disabled: isFirst }]}>
+			{
+				!isFirst ? (
+					<a
+						class="page-link px-1"
+						href={`/posts/${1}`}
+						aria-label="Previous"
+					>
+						<span aria-hidden="true">
+							<Icon iconName="chevron-double-left" />
+						</span>
+					</a>
+				) : (
+					<span
+						class="page-link px-1"
+						aria-hidden="true"
+					>
+						<Icon iconName="chevron-double-left" />
+					</span>
+				)
+			}
+		</li>
+		<li class:list={["page-item", { disabled: isFirst }]}>
+			{
+				!isFirst ? (
+					<a
+						class="page-link"
+						href={`/posts/${pageNumber - 1}`}
+						aria-label="Previous"
+					>
+						<span aria-hidden="true">
+							<Icon iconName="chevron-left" />
+						</span>
+					</a>
+				) : (
+					<span
+						class="page-link"
+						aria-hidden="true"
+					>
+						<Icon iconName="chevron-left" />
+					</span>
+				)
+			}
+		</li>
+		{
+			range(directionPages.before)
+				.reverse()
+				.map((i) => (
+					<li class="page-item">
+						<a
+							class="page-link"
+							href={`/posts/${pageNumber - (i + 1)}`}
+						>
+							{pageNumber - (i + 1)}
+						</a>
+					</li>
+				))
+		}
+		<li class="page-item active">
+			<span
+				class="page-link"
+				aria-hidden="true"
+			>
+				{pageNumber}
+			</span>
+		</li>
+		{
+			range(directionPages.after).map((i) => (
+				<li class="page-item">
+					<a
+						class="page-link"
+						href={`/posts/${pageNumber + i + 1}`}
+					>
+						{pageNumber + i + 1}
+					</a>
+				</li>
+			))
+		}
+		<li class:list={["page-item", { disabled: isLast }]}>
+			{
+				!isLast ? (
+					<a
+						class="page-link"
+						href={`/posts/${pageNumber + 1}`}
+						aria-label="Next"
+					>
+						<span aria-hidden="true">
+							<Icon iconName="chevron-right" />
+						</span>
+					</a>
+				) : (
+					<span
+						class="page-link"
+						aria-hidden="true"
+					>
+						<Icon iconName="chevron-right" />
+					</span>
+				)
+			}
+		</li>
+		<li class:list={["page-item", { disabled: isLast }]}>
+			{
+				!isLast ? (
+					<a
+						class="page-link px-1"
+						href={`/posts/${numberOfPostPages}`}
+						aria-label="Previous"
+					>
+						<span aria-hidden="true">
+							<Icon iconName="chevron-double-right" />
+						</span>
+					</a>
+				) : (
+					<span
+						class="page-link px-1"
+						aria-hidden="true"
+					>
+						<Icon iconName="chevron-double-right" />
+					</span>
+				)
+			}
+		</li>
+	</ul>
+</nav>

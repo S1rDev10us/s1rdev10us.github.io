@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Overlay from "../layouts/Overlay.astro";
+import { range } from "../lib";
+const posts = await getCollection("posts");
+// import Vid from "/0001-0625.mp4";
+---
+
+<Overlay title="Feed">
+	<!-- <video
+		id="scroll-video"
+		style="position: fixed; width:100vw;left: 0; height:100%; object-fit: cover; top:0;"
+		src={Vid}
+	></video>
+	<script>
+		const repeats = 1;
+		const vid = document.getElementById("scroll-video");
+		window.addEventListener("scroll", function () {
+			var h = document.documentElement,
+				b = document.body,
+				st = "scrollTop",
+				sh = "scrollHeight";
+			const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
+			console.log((percent * repeats) % 1);
+			vid.currentTime = vid.duration * ((percent * repeats) % 1);
+		});
+	</script> -->
+	{
+		posts.map((v) => (
+			<>
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">{v.data.title}</h5>
+						<div class="card-text" />
+					</div>
+				</div>
+			</>
+		))
+	}
+	{
+		range(200).map(() => (
+			<>
+				hi
+				<br />
+			</>
+		))
+	}
+</Overlay>

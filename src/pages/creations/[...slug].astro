@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCreations } from "../../scripts/data";
+import Overlay from "../../layouts/Overlay.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCreations();
+	return posts.map((p) => ({
+		params: {
+			slug: p.slug,
+		},
+		props: { post: p },
+	}));
+}
+export interface Props {
+	post: CollectionEntry<"creations">;
+}
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+---
+
+<Overlay title={post.data.title}>
+	<i>{remarkPluginFrontmatter.minutesRead + ""}</i>
+	<Content />
+</Overlay>

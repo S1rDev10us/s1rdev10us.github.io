@@ -1,0 +1,70 @@
+---
+import { name, socials } from "../scripts/data";
+import Icon from "./Icon";
+---
+
+<div
+	class="z-3 sticky-bottom"
+	style="backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(1px);"
+>
+	<nav class="navbar navbar-expand-sm bg-body-tertiary border-top opacity-50">
+		<div class="container-fluid">
+			<div
+				class="collapse navbar-collapse"
+				id="footerSupportedContent"
+			>
+				<ul class="navbar-nav me-auto mb-0 w-100">
+					<li class="nav-item">
+						<div class="nav-link active flex-nowrap">
+							<Icon
+								iconName="c-circle"
+								className="d-inline-block"
+							>
+								&nbsp;{new Date().getFullYear()}&nbsp;{name}
+							</Icon>
+						</div>
+					</li>
+					<li class="nav-item">
+						<div class="nav-link">
+							Last&nbsp;Updated&nbsp;{new Date().toDateString().trim()}
+						</div>
+					</li>
+
+					<li class="me-auto"></li>
+					<li class="nav-item">
+						<div class="nav-link active"></div>
+					</li>
+					<li class="nav-item">
+						<div class="d-flex">
+							{
+								socials.map((v) => (
+									// <li class="nav-item">
+									<a
+										href={v.href}
+										title={v.name}
+										class="nav-link active px-1"
+									>
+										<Icon iconName={v.icon} />
+									</a>
+									// </li>
+								))
+							}
+						</div>
+					</li>
+					<slot />
+				</ul>
+			</div>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#footerSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</nav>
+</div>

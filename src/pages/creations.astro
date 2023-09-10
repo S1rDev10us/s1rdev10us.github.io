@@ -1,0 +1,14 @@
+---
+import CreationPreview from "../components/CreationPreview.astro";
+import Overlay from "../layouts/Overlay.astro";
+import { getCreations } from "../scripts/data";
+const creations = await getCreations();
+---
+
+<Overlay title="Creations">
+	<div
+		class="d-flex text-center align-items-center justify-content-center gap-2"
+	>
+		{creations.map((v) => <CreationPreview {...v} />)}
+	</div>
+</Overlay>

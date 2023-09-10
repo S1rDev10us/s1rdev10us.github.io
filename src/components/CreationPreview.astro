@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Icon from "./Icon";
+import Countdown from "./Countdown.astro";
+export type Props = CollectionEntry<"creations">;
+const { data, slug } = Astro.props;
+---
+
+<div
+	class="card mt-2"
+	style="width: 20rem;"
+>
+	<div class="card-body">
+		<h5 class="card-title">{data.title}</h5>
+		{
+			data.description ? (
+				<div class="card-text">{data.description}</div>
+			) : undefined
+		}
+
+		<div class="row my-1 mx-2 gap-2">
+			<div class="col-auto px-0">
+				<a
+					href={`/creation/${slug}`}
+					class="btn btn-primary btn-sm"
+					>View details</a
+				>
+			</div>
+			{
+				data.externalLinks?.map((v) => (
+					<div class="col-auto px-0">
+						<a
+							href={v.url}
+							title={v.title}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn btn-primary btn-sm"
+						>
+							{v.title}
+							<small>
+								<Icon iconName="box-arrow-up-right" />
+							</small>
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</div>
+	{
+		data.released ? (
+			<div class="card-footer text-center text-body-secondary">
+				<div class="row">
+					<div class="col">
+						Released <Countdown date={+data.released} />
+					</div>
+				</div>
+			</div>
+		) : undefined
+	}
+</div>

@@ -1,0 +1,28 @@
+{
+	"cSpell.words": [
+		"Aarthificial",
+		"Astortion",
+		"astro",
+		"astrojs",
+		"crossorigin",
+		"Devlogs",
+		"frontmatter",
+		"localstorage",
+		"nbsp",
+		"nowrap",
+		"stylesheet",
+		"toggler",
+		"typeof",
+		"youtuber"
+	],
+	"cSpell.enableFiletypes": ["astro", "mdx"],
+	"cSpell.language": "en-GB",
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true
+	}
+}

@@ -1,0 +1,101 @@
+---
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon";
+// import WorkflowCarousel from "../components/WorkflowCarousel.astro";
+import Overlay from "../layouts/Overlay.astro";
+import { getHobbies, getRecommendations, name } from "../scripts/data";
+const hobbies = await getHobbies();
+---
+
+<Overlay title={`${name}'s website`}>
+	<div>
+		<Hero />
+
+		<!-- <div
+			class="card mb-3 text-dark"
+			style="background-color: #819b9e;"
+		>
+			<div class="card-body text-center">
+				<p class="card-text">Hello, I'm an indie games developer</p>
+			</div>
+		</div> -->
+
+		<h1>My Work</h1>
+		<p>
+			I am an indie games developer. I make videos about my game development
+			process aimed both at other developers and people who are interested in
+			the progress of my game
+		</p>
+
+		<!-- I don't like how the carousel looks -->
+		<!-- <WorkflowCarousel /> -->
+
+		<h1>
+			I <Icon
+				iconName="heart-fill"
+				className="text-danger"
+			/>
+		</h1>
+
+		<ul
+			class="shadow-lg list-group text-start col-auto"
+			style="width: fit-content;"
+		>
+			{
+				hobbies.map((v) => (
+					<li class="list-group-item row d-flex p-0 m-0">
+						<div class="col-auto ms-auto py-2 text-start border-end align-items-center justify-content-center">
+							<div class="my-auto">
+								{typeof v !== "string" && v.emoji ? (
+									<Icon iconName={v.emoji} />
+								) : undefined}
+							</div>
+						</div>
+						<div class="col py-2">
+							{typeof v === "string" ? (
+								v
+							) : (
+								<>
+									{v.url ? (
+										<a
+											class="text-info link-underline link-underline-opacity-0 link-offset-2 stretched-link"
+											href={v.url}
+										>
+											{v.name}
+										</a>
+									) : (
+										v.name
+									)}
+								</>
+							)}
+						</div>
+					</li>
+				))
+			}
+		</ul>
+
+		<h1>My recommendations:</h1>
+		<ul>
+			{
+				getRecommendations().map((v) => (
+					<>
+						<li>
+							<a
+								href={v.link}
+								class="text-body link-offset-2"
+							>
+								{v.icon ? (
+									<Icon
+										iconName={v.icon}
+										className="text-info"
+									/>
+								) : undefined}
+								{v.name}
+							</a>
+						</li>
+					</>
+				))
+			}
+		</ul>
+	</div>
+</Overlay>

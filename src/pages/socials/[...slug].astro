@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Overlay from "../../layouts/Overlay.astro";
+
+export async function getStaticPaths() {
+	const socials = await getCollection("socials");
+	return socials.map((social) => ({
+		params: {
+			slug: social.slug,
+		},
+		props: { social },
+	}));
+}
+export interface Props {
+	social: CollectionEntry<"socials">;
+}
+const { social } = Astro.props;
+const { Content } = await social.render();
+---
+
+<Overlay title={social.data.title}>
+	<Content />
+</Overlay>

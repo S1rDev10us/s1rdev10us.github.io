@@ -1,0 +1,16 @@
+---
+import type classNames from "classnames";
+export interface Props {
+	date: Date | number;
+	style?: string;
+	"class:list"?: classNames.Argument;
+}
+const { date, style } = Astro.props;
+---
+
+<script src="../scripts/components/TimeCounter.ts"></script>
+<time-counter
+	style={style}
+	class:list={[Astro.props["class:list"]]}
+	data-date={+new Date(date)}
+></time-counter>
