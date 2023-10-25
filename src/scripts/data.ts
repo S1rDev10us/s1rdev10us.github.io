@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import { Theme } from "./themes";
 import os from "os";
 import { range } from "../lib";
