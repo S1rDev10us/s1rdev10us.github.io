@@ -94,6 +94,11 @@ export const socials: {
 	isContact?: boolean;
 }[] = [
 	{
+		name: "Youtube",
+		icon: "youtube",
+		href: "https://www.youtube.com/@S1rDev10us",
+	},
+	{
 		name: "Discord",
 		icon: "discord",
 		href: "/discord",
