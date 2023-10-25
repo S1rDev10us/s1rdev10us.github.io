@@ -19,6 +19,9 @@ if (new Function("try {return this===window;}catch(e){ return false;}")())
 		darkMatchMedia.onchange = () => setTheme();
 		lightMatchMedia.onchange = () => setTheme();
 
+		document.addEventListener("astro:page-load", () => setTheme());
+		document.addEventListener("astro:after-swap", () => setTheme());
+
 		setTheme();
 		function resolveTheme(theme?: Theme | null): Theme {
 			if (!theme) return resolveTheme(currentTheme);
