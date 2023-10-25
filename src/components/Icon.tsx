@@ -29,7 +29,7 @@ export default function Icon<T extends iconName>(props: {
 		const src = images[props.iconName as keyof typeof images];
 		return (
 			<img
-				src={src}
+				src={src.src}
 				style={props.style}
 				title={props.alt}
 				className={classNames(
@@ -37,8 +37,8 @@ export default function Icon<T extends iconName>(props: {
 					props.className,
 					props["class:list"]
 				)}
-				width={props.width}
-				height={props.height}
+				width={props.width ?? src.width}
+				height={props.height ?? src.height}
 			/>
 		);
 	}

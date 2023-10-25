@@ -29,3 +29,6 @@ dist-ssr
 .astro
 
 secret.json
+
+
+src\content\posts\testa

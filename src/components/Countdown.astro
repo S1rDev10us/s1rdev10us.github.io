@@ -2,10 +2,12 @@
 import type classNames from "classnames";
 export interface Props {
 	date: Date | number;
+	futureText?: string;
+	pastText?: string;
 	style?: string;
 	"class:list"?: classNames.Argument;
 }
-const { date, style } = Astro.props;
+const { date, style, futureText, pastText } = Astro.props;
 ---
 
 <script src="../scripts/components/TimeCounter.ts"></script>
@@ -13,4 +15,6 @@ const { date, style } = Astro.props;
 	style={style}
 	class:list={[Astro.props["class:list"]]}
 	data-date={+new Date(date)}
+	data-future-text={futureText}
+	data-past-text={pastText}
 ></time-counter>

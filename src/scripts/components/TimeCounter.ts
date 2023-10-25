@@ -1,6 +1,7 @@
 import moment from "moment";
 class TimeCountdown extends HTMLElement {
 	#callback?: number | undefined;
+
 	constructor() {
 		super();
 		this.updateTime();
@@ -26,8 +27,13 @@ class TimeCountdown extends HTMLElement {
 	updateTime() {
 		const d = this.dataset.date;
 		if (!d) return;
+		let momentDate = moment(new Date(+d));
 
-		this.innerText = moment(new Date(+d)).fromNow().replaceAll(" ", "\xa0");
+		this.innerText = `${
+			momentDate.isBefore()
+				? this.dataset.pastText ?? "Released"
+				: this.dataset.futureText ?? "Releases"
+		}\xa0${momentDate.fromNow().replaceAll(" ", "\xa0")}`;
 	}
 }
 customElements.define("time-counter", TimeCountdown);

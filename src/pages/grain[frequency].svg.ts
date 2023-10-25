@@ -1,6 +1,6 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import svg from "../assets/grain-base.svg?raw";
-export const get: APIRoute = ({ params }) => {
+export const GET: APIRoute = ({ params }) => {
 	return new Response(
 		svg.replace(
 			"baseFrequency='1'",

@@ -3,22 +3,13 @@ import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon";
 // import WorkflowCarousel from "../components/WorkflowCarousel.astro";
 import Overlay from "../layouts/Overlay.astro";
-import { getHobbies, getRecommendations, name } from "../scripts/data";
-const hobbies = await getHobbies();
+import { getHobbies, getRecommendations } from "../scripts/data";
+// const hobbies = await getHobbies();
 ---
 
-<Overlay title={`${name}'s website`}>
+<Overlay title={`Homepage`}>
 	<div>
 		<Hero />
-
-		<!-- <div
-			class="card mb-3 text-dark"
-			style="background-color: #819b9e;"
-		>
-			<div class="card-body text-center">
-				<p class="card-text">Hello, I'm an indie games developer</p>
-			</div>
-		</div> -->
 
 		<h1>My Work</h1>
 		<p>
@@ -27,10 +18,12 @@ const hobbies = await getHobbies();
 			the progress of my game
 		</p>
 
-		<!-- I don't like how the carousel looks -->
-		<!-- <WorkflowCarousel /> -->
+		{
+			/*<!-- I don't like how the carousel looks -->
+			<!-- <WorkflowCarousel /> -->*/
+		}
 
-		<h1>
+		<!-- <h1>
 			I <Icon
 				iconName="heart-fill"
 				className="text-danger"
@@ -72,7 +65,7 @@ const hobbies = await getHobbies();
 					</li>
 				))
 			}
-		</ul>
+		</ul> -->
 
 		<h1>My recommendations:</h1>
 		<ul>

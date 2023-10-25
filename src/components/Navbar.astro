@@ -14,17 +14,22 @@ import { name, paths } from "../scripts/data";
 	>
 		<div class="container-fluid">
 			<a
-				class="navbar-brand my-auto"
+				class="navbar-brand my-auto d-flex flex-row"
 				href="/"
 			>
-				<Icon
-					className="img-fluid"
-					iconName="logo"
-					alt={name}
-					width={39}
-					height={39}
-				/>
-				{name}
+				<div class="my-auto">
+					<Icon
+						className="img-fluid"
+						iconName="logo"
+						alt={name}
+						width={39}
+						height={39}
+						style={{ marginRight: "5px" }}
+					/>
+				</div>
+				<div class="my-auto">
+					{name}
+				</div>
 			</a>
 			<button
 				class="navbar-toggler my-auto"

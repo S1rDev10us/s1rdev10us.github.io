@@ -10,15 +10,16 @@
 		"build": "tsc && astro build",
 		"check": "astro check",
 		"sync": "astro sync",
-		"preview": "astro preview"
+		"preview": "astro preview",
+		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^0.19.7",
-		"@astrojs/react": "^2.2.1",
-		"@astrojs/rss": "^2.4.3",
+		"@astrojs/mdx": "^1.0.3",
+		"@astrojs/react": "^3.0.2",
+		"@astrojs/rss": "^3.0.0",
 		"@astrojs/sitemap": "^3.0.0",
 		"@types/bootstrap": "^5.2.6",
-		"astro": "^2.9.1",
+		"astro": "^3.0.12",
 		"astro-bootstrap": "^0.6.1",
 		"bootstrap": "^5.3.0",
 		"bootstrap-icons": "^1.10.5",

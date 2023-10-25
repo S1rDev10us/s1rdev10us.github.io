@@ -25,7 +25,9 @@ export const paths: { name: string; path: string }[] = [
 	{ name: "About\xa0me", path: "/" },
 	{ name: "My\xa0creations", path: "/creations" },
 	{ name: "Posts", path: "/posts" },
-	{ name: "Tools\xa0I\xa0Use", path: "/tools" },
+
+	// { name: "Tools\xa0I\xa0Use", path: "/tools" },// I'm not sure what I want to do with this page atm
+
 	// { name: "my\xa0journey", path: "/journey" },
 ];
 
@@ -165,12 +167,11 @@ export async function getStats(): Promise<{ value: any; name: string }[]> {
 			name: "Posts",
 		},
 		{
-			value: (await getCollection("posts")).filter((v) => v.data.isVideo)
-				.length,
+			value: (await getPosts()).filter((v) => v.data.isVideo).length,
 			name: "Videos",
 		},
 		{
-			value: 0,
+			value: 1,
 			name: "Subscribers",
 		},
 		{
