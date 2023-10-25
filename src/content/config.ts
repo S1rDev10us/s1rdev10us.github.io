@@ -1,6 +1,6 @@
 import { rssSchema } from "@astrojs/rss";
 import { defineCollection } from "astro:content";
-import { z } from "zod";
+import { z } from "astro:content";
 
 const preTransformPostScheme = rssSchema.extend({
 	isVideo: z.boolean().default(false),
