@@ -7,7 +7,7 @@
 		"dev": "npm run serve",
 		"serve": "astro dev",
 		"start": "npm run serve",
-		"build": "tsc && astro build",
+		"build": "npm run sync && tsc && astro build",
 		"check": "astro check",
 		"sync": "astro sync",
 		"preview": "astro preview",
