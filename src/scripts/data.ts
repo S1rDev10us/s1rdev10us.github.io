@@ -24,7 +24,7 @@ export async function getPostCollectionLength() {
 export const paths: { name: string; path: string }[] = [
 	{ name: "About\xa0me", path: "/" },
 	{ name: "My\xa0creations", path: "/creations" },
-	{ name: "Posts", path: "/posts" },
+	{ name: "Posts", path: "/posts/1/" },
 
 	// { name: "Tools\xa0I\xa0Use", path: "/tools" },// I'm not sure what I want to do with this page atm
 
