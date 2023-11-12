@@ -1,9 +1,3 @@
-// import { useContext } from "react";
-// import { ThemeContext, Themes } from "./Context";
-
-// export function typeData(data: dataObject) {
-// 	return data;
-// }
 function capitaliseWith(str: string, splitter: string) {
 	return str
 		.split(splitter)
@@ -26,15 +20,6 @@ export function capitaliseWords(
 	}
 	return capitaliseWith(str.toLowerCase(), splitter);
 }
-
-// export function resolveTheme(theme?: Themes) {
-// 	if (theme === undefined) {
-// 		return resolveTheme(useContext(ThemeContext).state);
-// 	}
-// 	if (theme != Themes.AUTO) return theme;
-
-// 	return (window.matchMedia("(prefers-color-scheme: dark)").matches ? Themes.DARK : Themes.LIGHT) as Themes;
-// }
 
 export function range(length: number) {
 	if (length % 1 != 0)

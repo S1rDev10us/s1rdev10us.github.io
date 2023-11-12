@@ -1,34 +1,20 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Theme } from "./themes";
 import os from "os";
-import { range } from "../lib";
+import { range } from "./lib";
 import type { iconName } from "../components/Icon";
 
 export async function getPostCollectionLength() {
-	return Math.ceil(
-		(await getPosts()).length / postListNumber
-		// 500 / postListNumber
-	);
+	return Math.ceil((await getPosts()).length / postListNumber);
 }
-// // @ts-expect-error
-// var secrets: {
-// 	youtube?: {
-// 		channelId: string;
-// 	};
-// };
-// //ensure secrets are never sent to client if I use data client side
-// if (!new Function("try {return this===window;}catch(e){ return false;}")()) {
-// 	secrets = JSON.parse(fs.readFileSync("./secret.json").toString());
-// }
 
 export const paths: { name: string; path: string }[] = [
 	{ name: "About\xa0me", path: "/" },
 	{ name: "My\xa0creations", path: "/creations" },
 	{ name: "Posts", path: "/posts/1/" },
+	{ name: "Find\xa0More", path: "/more" },
 
 	// { name: "Tools\xa0I\xa0Use", path: "/tools" },// I'm not sure what I want to do with this page atm
-
-	// { name: "my\xa0journey", path: "/journey" },
 ];
 
 export const themes: { icon: iconName; id: Theme; desc: string }[] = [
@@ -160,6 +146,7 @@ export async function getCreations(): Promise<CollectionEntry<"creations">[]> {
 }
 
 export async function getStats(): Promise<{ value: any; name: string }[]> {
+	// TODO: actually integrate this with google APIs
 	// const data = await (
 	// 	await fetch(
 	// 		`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${secrets.youtube.channelId}&key=`
@@ -206,9 +193,7 @@ export async function getHobbies(): Promise<
 			url: "/creations",
 		},
 		{
-			// emoji: "🛠️🎮",
 			emoji: "tools",
-			// emoji: "🎮",
 			name: "Games design",
 			url: "/creations",
 		},
@@ -226,6 +211,7 @@ export async function getHobbies(): Promise<
 export function getRecommendations(): {
 	name: string;
 	link: string;
+	category: string;
 	icon?: iconName;
 }[] {
 	return [
@@ -233,36 +219,43 @@ export function getRecommendations(): {
 			name: "Outer Wilds",
 			icon: "controller",
 			link: "https://store.steampowered.com/app/753640/Outer_Wilds/",
+			category: "games",
 		},
 		{
 			name: "My Games",
 			icon: "controller",
 			link: "/creations",
+			category: "games",
 		},
 		{
 			name: "The Cosmere",
 			icon: "book-half",
 			link: "https://www.brandonsanderson.com/hello-my-names-brandon/",
+			category: "books",
 		},
 		{
 			name: "Sebastian Lague",
 			icon: "youtube",
 			link: "https://www.youtube.com/@SebastianLague",
+			category: "game design",
 		},
 		{
 			name: "aarthificial",
 			icon: "youtube",
 			link: "https://www.youtube.com/@aarthificial",
+			category: "game design",
 		},
 		{
 			name: "GMTK",
 			icon: "youtube",
 			link: "https://www.youtube.com/@GMTK",
+			category: "game design",
 		},
 		{
 			name: "tessel8r",
 			icon: "youtube",
 			link: "https://www.youtube.com/@t3ssel8r",
+			category: "game design",
 		},
 	];
 }

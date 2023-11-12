@@ -1,6 +1,6 @@
 ---
-import { capitaliseWords } from "../lib";
-import Icon from "../components/Icon";
+import { capitaliseWords } from "../scripts/lib";
+import Icon, { images } from "../components/Icon";
 import ThemePicker from "./ThemePicker.astro";
 import { name, paths } from "../scripts/data";
 ---
@@ -10,7 +10,8 @@ import { name, paths } from "../scripts/data";
 	style="backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);"
 >
 	<nav
-		class="navbar navbar-expand-md bg-body-tertiary border-bottom opacity-75"
+		class="navbar navbar-expand-md bg-body-tertiary border-bottom"
+		style="--bs-bg-opacity:0.75;"
 	>
 		<div class="container-fluid">
 			<a
@@ -23,7 +24,7 @@ import { name, paths } from "../scripts/data";
 						iconName="logo"
 						alt={name}
 						width={39}
-						height={39}
+						height={(39 / images.logo.width) * images.logo.height}
 						style={{ marginRight: "5px" }}
 					/>
 				</div>
@@ -75,7 +76,6 @@ import { name, paths } from "../scripts/data";
 						<hr />
 					</li>
 					<li class="nav-item my-auto">
-						<!-- For some reason this doesn't work after I updated astro so I'm just going to go with it and remove it until I can be bothered to fix it ::D -->
 						<ThemePicker />
 						<span
 							class="dark-invisible"
@@ -96,48 +96,53 @@ import { name, paths } from "../scripts/data";
 								style="flex-wrap: nowrap;"
 							>
 								{
-									Astro.url.pathname.split("/").map((v, i, a) => {
-										if (v == "") return undefined;
-										let u = "";
-										for (const path of a.slice(0, i + 1)) {
-											if (path == "") continue;
-											u += "/" + path;
-										}
-										const active = i != a.length - 1;
-										switch (u) {
-											case "/post":
-												u = "/posts/1/";
-												break;
-											case "/posts":
-												u = "/posts/1/";
-												break;
-											default:
-												break;
-										}
-										return (
-											<li
-												class:list={[
-													"breadcrumb-item",
-													"pe-2",
-													{
-														active,
-													},
-												]}
-												style="flex-wrap: nowrap; display: flex;"
-											>
-												{!active ? (
-													<div class="link-secondary">{capitaliseWords(v)}</div>
-												) : (
-													<a
-														class="link-body-emphasis"
-														href={u}
-													>
-														{capitaliseWords(v)}
-													</a>
-												)}
-											</li>
-										);
-									})
+									Astro.url.pathname
+										.split("/")
+										.filter((v) => v.trim() != "")
+										.map((v, i, a) => {
+											if (v == "") return undefined;
+											let u = "";
+											for (const path of a.slice(0, i + 1)) {
+												if (path == "") continue;
+												u += "/" + path;
+											}
+											const active = i != a.length - 1;
+											switch (u) {
+												case "/post":
+													u = "/posts/1/";
+													break;
+												case "/posts":
+													u = "/posts/1/";
+													break;
+												default:
+													break;
+											}
+											return (
+												<li
+													class:list={[
+														"breadcrumb-item",
+														"pe-2",
+														{
+															active,
+														},
+													]}
+													style="flex-wrap: nowrap; display: flex;"
+												>
+													{!active ? (
+														<div class="link-secondary">
+															{capitaliseWords(v)}
+														</div>
+													) : (
+														<a
+															class="link-body-emphasis"
+															href={u}
+														>
+															{capitaliseWords(v)}
+														</a>
+													)}
+												</li>
+											);
+										})
 								}
 							</ol>
 						</nav>

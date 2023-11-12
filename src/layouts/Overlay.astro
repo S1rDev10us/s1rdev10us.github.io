@@ -30,14 +30,18 @@ const title =
 		{title}
 	</title>
 
-	<!-- Insert navbar here-->
-
-	<Navbar slot="before-content" />
+	<Navbar
+		transition:name="navbar"
+		transition:persist
+		transition:animate="initial"
+		slot="before-content"
+	/>
 
 	<div
-		class="container min-vh-100"
+		class="container mb-auto"
 		transition:animate="slide"
 	>
+		{/*style="min-height: calc( 100svh - ( 57px + 64px + 1px ) );"*/}
 		<div class="row align-items-start">
 			<div class="col">
 				<main class:list={["px-3", "py-2"]}>
@@ -46,7 +50,13 @@ const title =
 			</div>
 		</div>
 	</div>
-	<!-- Insert footer here -->
 
-	<Footer slot="after-content"><slot name="footer-content" /></Footer>
+	<Footer
+		slot="after-content"
+		transition:name="footer"
+		transition:persist
+		transition:animate="initial"
+	>
+		<slot name="footer-content" />
+	</Footer>
 </BaseLayout>

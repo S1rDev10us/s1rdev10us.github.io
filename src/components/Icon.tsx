@@ -18,8 +18,8 @@ export default function Icon<T extends iconName>(props: {
 	className?: string;
 	"class:list"?: classNames.ArgumentArray;
 	style?: React.CSSProperties;
-	width?: number;
-	height?: number;
+	width?: number | string;
+	height?: number | string;
 	rounded?: boolean;
 	children?: React.ReactNode;
 }): JSX.Element {
@@ -60,25 +60,3 @@ export default function Icon<T extends iconName>(props: {
 	}
 	throw new Error(`Icon "${props.iconName}" not found!`);
 }
-
-// import { videoSiteIconClasses, videoSiteImageUrls } from "../data";
-// import { capitaliseWords } from "../lib";
-
-// export function SocialIcon(props: { social: string }) {
-// 	const social = props.social;
-// 	return (
-// 		<>
-// 			{social in videoSiteImageUrls ? (
-// 				<i className={`bi ${videoSiteIconClasses[social]}`} />
-// 			) : social in videoSiteImageUrls ? (
-// 				<Image
-// 					height={"25px"}
-// 					src={videoSiteImageUrls[social]}
-// 					rounded
-// 				/>
-// 			) : (
-// 				capitaliseWords(social.replace("_", " ")) + " "
-// 			)}
-// 		</>
-// 	);
-// }

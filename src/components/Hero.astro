@@ -29,11 +29,6 @@ import { name, getStats } from "../scripts/data";
 							<div class="col">
 								<div class="row justify-content-center">
 									{
-										// typeof v.value == "number"
-										// 	? `text-shadow: 0 0 0.2rem hsl(${
-										// 			(v.value * 1) % 360
-										// 	  },100%,50%);`
-										// 	: undefined
 										(await getStats()).map((v) => (
 											<div class="col border-top">
 												<h6>

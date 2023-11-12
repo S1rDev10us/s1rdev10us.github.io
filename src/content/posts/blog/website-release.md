@@ -1,6 +1,7 @@
 ---
 title: "My website releases!"
 pubDate: 1698241103423
+editDate: 1699806027686
 draft: false
 description: "I have finally reached the end of a long journey to develop my website"
 ---
@@ -9,7 +10,7 @@ description: "I have finally reached the end of a long journey to develop my web
 
 ### My plans for this website
 
-Since I was fairly young, I have really enjoyed video games. This isn't especially uncommon but that mixed with my passion for coding has for quite a long time made me decide that I want to go into games development.
+Since I was fairly young, I have really enjoyed video games. This isn't especially uncommon but that, mixed with my passion for coding, has for quite a long time made me decide that I want to go into games development.
 
 In preparation for this I decided to make a website for my game development. This took me quite a while but I knew that I needed a central hub for my devlogs and my social media.
 
@@ -34,3 +35,7 @@ Astro was initially quite frustrating simply because the [library I used to use 
 The [version of this library for astro](https://astro-bootstrap.github.io/) annoyed me because I hadn't actually learned the bootstrap syntax only the react library which was much easier. The astro library relied heavily on that syntax so I decided that not using a library would be much easier since I was having to learn bootstrap anyway.
 
 From this point I started to recreate my website mostly from scratch because of the lack of compatibility of my old code adding features as required until it became the website that I release today!
+<br/>
+<br/>
+<br/>
+edit: _punctuation_

@@ -19,6 +19,13 @@ const online = import.meta.env.PROD || isOnline();
 	<head>
 		<meta charset="UTF-8" />
 		<!-- "charset" meta element should be the first thing in <head> -->
+		<link
+			rel="preload"
+			href="/grain1.svg"
+			as="image"
+			type="image/svg"
+			media="(prefers-color-scheme: dark)"
+		/>
 		<script>
 			console.log(
 				"%cHELLO THERE",

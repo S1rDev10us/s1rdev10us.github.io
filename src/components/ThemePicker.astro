@@ -28,6 +28,7 @@ function hideThemes(theme: "auto" | "light" | "dark") {
 		data-bs-toggle="dropdown"
 		aria-expanded="false"
 	>
+		<!-- Dropdown button -->
 		{
 			themes.map((v) => (
 				<div
@@ -38,7 +39,6 @@ function hideThemes(theme: "auto" | "light" | "dark") {
 				</div>
 			))
 		}
-		<!-- Dropdown button -->
 	</button>
 	<ul class="dropdown-menu">
 		{

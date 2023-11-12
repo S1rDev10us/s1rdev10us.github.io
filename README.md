@@ -6,7 +6,7 @@
 
 ## Setup guide
 
-If you want to run this locally install the repository then install the dependencies
+If you want to run this locally, download the repository then install the dependencies
 
 ```powershell
 npm install

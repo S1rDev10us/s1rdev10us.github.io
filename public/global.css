@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+
 @media (min-width: 768px) {
 	.rounded-md-start {
 		border-bottom-left-radius: var(--bs-border-radius) !important;
@@ -32,4 +34,13 @@
 }
 [data-bs-theme="light"] .light-invisible {
 	display: none !important;
+}
+* {
+	font-family: "Cabin", sans-serif;
+}
+html,
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }

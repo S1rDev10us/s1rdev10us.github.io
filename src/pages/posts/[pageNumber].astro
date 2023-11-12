@@ -4,7 +4,7 @@ import {
 	getPostCollectionLength,
 	getPosts,
 } from "../../scripts/data";
-import { range } from "../../lib";
+import { range } from "../../scripts/lib";
 import Overlay from "../../layouts/Overlay.astro";
 import PostPreview from "../../components/PostPreview.astro";
 import PostPagination from "../../components/PostPagination.astro";
@@ -32,24 +32,6 @@ const posts = (await getPosts()).slice(
 	<br />
 	<PostPagination pageNumber={pageNumber} />
 
-	<!-- <video
-		id="scroll-video"
-		style="position: fixed; width:100vw;left: 0; height:100%; object-fit: cover; top:0;"
-		src={Vid}
-		></video>
-		<script>
-			const repeats = 1;
-			const vid = document.getElementById("scroll-video");
-			window.addEventListener("scroll", function () {
-				var h = document.documentElement,
-				b = document.body,
-				st = "scrollTop",
-				sh = "scrollHeight";
-				const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
-				console.log((percent * repeats) % 1);
-				vid.currentTime = vid.duration * ((percent * repeats) % 1);
-			});
-		</script> -->
 	<div
 		class="d-flex gap-2 mb-5 flex-wrap align-items-center justify-content-center"
 	>

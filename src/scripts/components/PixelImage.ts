@@ -28,20 +28,12 @@ class PixelImage extends HTMLCanvasElement {
 		this.image.src = src;
 	}
 	attributeChangedCallback(
-		name: ValueOf<(typeof PixelImage)["observedAttributes"]>
+		_name: ValueOf<(typeof PixelImage)["observedAttributes"]>
 	) {
-		switch (name) {
-			case "style":
-				// this.setStyle();
-				break;
-			case "src":
-				this.updateImage();
-				break;
-		}
 		this.updateImage();
 	}
 	static get observedAttributes() {
-		return ["style", "src"] as const;
+		return ["src"] as const;
 	}
 }
 customElements.define("pixel-image", PixelImage, { extends: "canvas" });

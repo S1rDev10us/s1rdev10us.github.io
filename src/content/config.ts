@@ -18,11 +18,6 @@ export const postScheme = preTransformPostScheme.transform((val) => {
 const posts = defineCollection({
 	type: "content",
 	schema: postScheme,
-
-	// ,z.object({
-	// 	title: z.string(),
-	// 	date: z.string().transform((a) => new Date(a)),
-	// }),
 });
 const socials = defineCollection({
 	type: "content",

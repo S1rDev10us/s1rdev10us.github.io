@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import Overlay from "../layouts/Overlay.astro";
-import { range } from "../lib";
+import { range } from "../scripts/lib";
 const posts = await getCollection("posts");
-// import Vid from "/0001-0625.mp4";
 ---
 
 <Overlay title="Feed">
-	<!-- <video
+	<!--
+		I'm actually going to leave this code here cause it's really cool and I may want to use it in the future (knowing me I will almost certainly never use it though lol)
+		<video
 		id="scroll-video"
 		style="position: fixed; width:100vw;left: 0; height:100%; object-fit: cover; top:0;"
 		src={Vid}
