@@ -67,10 +67,11 @@ const { data, slug } = Astro.props;
 							title={data.source.title}
 							class="btn btn-primary btn-sm"
 						>
-							{data.source.title}
-							<small>
-								<Icon iconName="box-arrow-up-right" />
-							</small>
+							{data.source.title}&nbsp;
+							<Icon
+								iconName="box-arrow-up-right"
+								style={{ fontSize: ".625em" }}
+							/>
 						</a>
 					) : undefined
 				}
