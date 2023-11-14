@@ -237,25 +237,25 @@ export function getRecommendations(): {
 			name: "Sebastian Lague",
 			icon: "youtube",
 			link: "https://www.youtube.com/@SebastianLague",
-			category: "game design",
+			category: "game design and development",
 		},
 		{
 			name: "aarthificial",
 			icon: "youtube",
 			link: "https://www.youtube.com/@aarthificial",
-			category: "game design",
+			category: "game design and development",
 		},
 		{
 			name: "GMTK",
 			icon: "youtube",
 			link: "https://www.youtube.com/@GMTK",
-			category: "game design",
+			category: "game design and development",
 		},
 		{
 			name: "tessel8r",
 			icon: "youtube",
 			link: "https://www.youtube.com/@t3ssel8r",
-			category: "game design",
+			category: "game design and development",
 		},
 	];
 }

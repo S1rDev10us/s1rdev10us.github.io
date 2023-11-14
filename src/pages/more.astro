@@ -2,17 +2,20 @@
 import Icon from "../components/Icon";
 import Overlay from "../layouts/Overlay.astro";
 import { getRecommendations } from "../scripts/data.ts";
-import { capitaliseWords } from "../scripts/lib.ts";
+import { capitaliseWords, range } from "../scripts/lib.ts";
 const recommendations = getRecommendations();
 ---
 
-<Overlay title="">
+<Overlay title="Find more">
 	<h1>Looking for more?</h1>
 	<p>
 		Well if you're here you've probably gone through all of the content I have
 		released to date so here are some other sources of content that I enjoy and
 		would recommend, most of them are better quality than my channel so I highly
 		recommend you check them out
+	</p>
+	<p>
+		<i> (Not all of these are related to game design)</i>
 	</p>
 	<!-- Y'know when I said that my code wasn't good in my README? Yeah this is what I meant: -->
 	{
@@ -25,11 +28,7 @@ const recommendations = getRecommendations();
 			}))
 			.map((category) => (
 				<>
-					<h2>
-						{capitaliseWords(
-							category.category ?? "Category doesn't exist, that's weird lol"
-						)}
-					</h2>
+					<h2>{capitaliseWords(category.category)}</h2>
 					<ul>
 						{category.recommendations.map((recommendation) => (
 							<>
@@ -45,4 +44,5 @@ const recommendations = getRecommendations();
 				</>
 			))
 	}
+	{import.meta.env.DEV && false ? range(1000).map(() => <br />) : undefined}
 </Overlay>
