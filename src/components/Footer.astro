@@ -1,5 +1,5 @@
 ---
-import { name, socials } from "../scripts/data";
+import { socials } from "../scripts/data";
 import Icon from "./Icon";
 ---
 
@@ -17,7 +17,8 @@ import Icon from "./Icon";
 				id="footerSupportedContent"
 			>
 				<ul class="navbar-nav me-auto mb-0 w-100">
-					<li class="nav-item">
+					{
+						/* <li class="nav-item">
 						<div class="nav-link active flex-nowrap">
 							<Icon
 								iconName="c-circle"
@@ -26,7 +27,8 @@ import Icon from "./Icon";
 								&nbsp;{new Date().getFullYear()}&nbsp;{name}
 							</Icon>
 						</div>
-					</li>
+					</li> */
+					}
 					<li class="nav-item">
 						<div class="nav-link">
 							Last&nbsp;Updated&nbsp;{new Date().toDateString().trim()}

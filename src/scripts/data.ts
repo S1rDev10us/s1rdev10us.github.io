@@ -12,7 +12,7 @@ export const paths: { name: string; path: string }[] = [
 	{ name: "About\xa0me", path: "/" },
 	{ name: "My\xa0creations", path: "/creations" },
 	{ name: "Posts", path: "/posts/1/" },
-	{ name: "Find\xa0More", path: "/more" },
+	{ name: "Respect", path: "/respect" },
 
 	// { name: "Tools\xa0I\xa0Use", path: "/tools" },// I'm not sure what I want to do with this page atm
 ];
@@ -179,83 +179,54 @@ export function isOnline(): boolean {
 		.some((v) => !(v ?? { internal: true }).internal);
 }
 
-export async function getHobbies(): Promise<
-	(string | { name: string; url?: string; emoji?: iconName })[]
-> {
-	return [
-		{
-			emoji: "heart-arrow",
-			name: "Archery",
-		},
-		{
-			emoji: "keyboard",
-			name: "Coding",
-			url: "/creations",
-		},
-		{
-			emoji: "tools",
-			name: "Games design",
-			url: "/creations",
-		},
-		{
-			emoji: "book-half",
-			name: "Reading",
-		},
-		{
-			emoji: "controller",
-			name: "Playing games",
-		},
-	];
-}
-
-export function getRecommendations(): {
-	name: string;
-	link: string;
-	category: string;
-	icon?: iconName;
-}[] {
-	return [
-		{
-			name: "Outer Wilds",
-			icon: "controller",
-			link: "https://store.steampowered.com/app/753640/Outer_Wilds/",
-			category: "games",
-		},
-		{
-			name: "My Games",
-			icon: "controller",
-			link: "/creations",
-			category: "games",
-		},
-		{
-			name: "The Cosmere",
-			icon: "book-half",
-			link: "https://www.brandonsanderson.com/hello-my-names-brandon/",
-			category: "books",
-		},
-		{
-			name: "Sebastian Lague",
-			icon: "youtube",
-			link: "https://www.youtube.com/@SebastianLague",
-			category: "game design and development",
-		},
-		{
-			name: "aarthificial",
-			icon: "youtube",
-			link: "https://www.youtube.com/@aarthificial",
-			category: "game design and development",
-		},
-		{
-			name: "GMTK",
-			icon: "youtube",
-			link: "https://www.youtube.com/@GMTK",
-			category: "game design and development",
-		},
-		{
-			name: "tessel8r",
-			icon: "youtube",
-			link: "https://www.youtube.com/@t3ssel8r",
-			category: "game design and development",
-		},
-	];
-}
+// export function getRecommendations(): {
+// 	name: string;
+// 	link: string;
+// 	category: string;
+// 	icon?: iconName;
+// }[] {
+// 	return [
+// 		{
+// 			name: "Outer Wilds",
+// 			icon: "controller",
+// 			link: "https://store.steampowered.com/app/753640/Outer_Wilds/",
+// 			category: "games",
+// 		},
+// 		{
+// 			name: "My Games",
+// 			icon: "controller",
+// 			link: "/creations",
+// 			category: "games",
+// 		},
+// 		{
+// 			name: "The Cosmere",
+// 			icon: "book-half",
+// 			link: "https://www.brandonsanderson.com/hello-my-names-brandon/",
+// 			category: "books",
+// 		},
+// 		{
+// 			name: "Sebastian Lague",
+// 			icon: "youtube",
+// 			link: "https://www.youtube.com/@SebastianLague",
+// 			category: "game design and development",
+// 		},
+// 		{
+// 			name: "aarthificial",
+// 			icon: "youtube",
+// 			link: "https://www.youtube.com/@aarthificial",
+// 			category: "game design and development",
+// 		},
+// 		{
+// 			name: "GMTK",
+// 			icon: "youtube",
+// 			link: "https://www.youtube.com/@GMTK",
+// 			category: "game design and development",
+// 		},
+// 		{
+// 			name: "tessel8r",
+// 			icon: "youtube",
+// 			link: "https://www.youtube.com/@t3ssel8r",
+// 			category: "game design and development",
+// 		},
+// 	];
+// }

@@ -1,0 +1,127 @@
+---
+// import Icon from "../components/Icon.tsx";
+import Overlay from "../layouts/Overlay.astro";
+// import { getRecommendations } from "../scripts/data.ts";
+// import { capitaliseWords, range } from "../scripts/lib.ts";
+// const recommendations = getRecommendations();
+---
+
+<Overlay title="Respect">
+	<h1>Respect</h1>
+	<p>
+		This is a non-exhaustive list of some of the online people, projects and
+		things that I respect and think that other people should check out
+	</p>
+	<!-- Y'know when I said that my code wasn't good in my README? Yeah this is what I meant: -->
+	{
+		(
+			[
+				{
+					title: <>Games</>,
+					recommendations: [
+						{
+							name: "Outer Wilds",
+							url: "https://annapurnainteractive.com/games/outer-wilds",
+						},
+						{
+							name: "Celeste",
+							url: "https://www.celestegame.com/",
+						},
+						// ...range(50).map((_) => ({ name: "Hello" })),
+					],
+				},
+				{
+					title: <>Books</>,
+					recommendations: [
+						{
+							name: "The Cosmere",
+							url: "https://www.brandonsanderson.com/hello-my-names-brandon/",
+						},
+					],
+				},
+				{
+					title: <>Games developers</>,
+					recommendations: [
+						{
+							name: "Sebastian Lague",
+							url: "https://www.youtube.com/@SebastianLague",
+						},
+						{
+							name: "aarthificial",
+
+							url: "https://www.youtube.com/@aarthificial",
+						},
+						{
+							name: "GMTK",
+
+							url: "https://www.youtube.com/@GMTK",
+						},
+						{
+							name: "tessel8r",
+
+							url: "https://www.youtube.com/@t3ssel8r",
+						},
+					],
+				},
+			] as {
+				title: HTMLElement;
+				recommendations: { name: string; url: string; hover?: string }[];
+			}[]
+		).map((v) => (
+			<>
+				<h2 class="mt-5">{v.title}</h2>
+				<div class="d-block">
+					<div
+						class={`d-block text-center w-100`}
+						style="line-height: 45px; box-sizing: content-box; word-break: normal; word-space: normal; overflow-wrap: break-word; max-width: 500px;"
+					>
+						{v.recommendations
+							.sort(() => Math.random() * 2 - 1)
+							.map((r) => {
+								let margin = Math.random() * 4 + 1;
+								let fontSize = Math.random() * 1 + 1;
+								return (
+									<span
+										style={`margin: ${margin}rem; font-size: ${fontSize}em; white-space: nowrap;`}
+									>
+										<a
+											class="position-relative link-body-emphasis"
+											href={r.url}
+										>
+											{r.name}
+										</a>
+									</span>
+								);
+							})}
+					</div>
+				</div>
+			</>
+		))
+	}
+	{
+		/*recommendations
+			.map((v) => v.category)
+			.filter((v, i, a) => a.indexOf(v) == i)
+			.map((category) => ({
+				recommendations: recommendations.filter((v) => v.category == category),
+				category,
+			}))
+			.map((category) => (
+				<>
+					<h2>{capitaliseWords(category.category)}</h2>
+					<ul>
+						{category.recommendations.map((recommendation) => (
+							<>
+								<li>
+									{recommendation.icon ? (
+										<Icon iconName={recommendation.icon} />
+									) : undefined}{" "}
+									<a href={recommendation.link}>{recommendation.name}</a>
+								</li>
+							</>
+						))}
+					</ul>
+				</>
+			))*/
+	}
+</Overlay>
