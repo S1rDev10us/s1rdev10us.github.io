@@ -18,6 +18,7 @@
 		"@astrojs/react": "^3.0.4",
 		"@astrojs/rss": "^3.0.0",
 		"@astrojs/sitemap": "^3.0.2",
+		"@fontsource/roboto": "^5.0.12",
 		"@types/bootstrap": "^5.2.6",
 		"astro": "^3.3.4",
 		"astro-bootstrap": "^0.6.1",
@@ -26,19 +27,21 @@
 		"classnames": "^2.3.2",
 		"mdast-util-to-string": "^4.0.0",
 		"moment": "^2.29.4",
+		"png-to-ico": "^2.1.8",
 		"react": "^18.2.0",
 		"react-bootstrap": "^2.7.4",
 		"react-dom": "^18.2.0",
 		"react-router": "^6.14.0",
-		"reading-time": "^1.5.0",
-		"three": "^0.151.2",
-		"zod": "^3.21.4"
+		"reading-time": "^1.5.0"
 	},
 	"devDependencies": {
+		"@resvg/resvg-js": "^2.6.2",
 		"@types/react": "^18.2.14",
 		"@types/react-dom": "^18.2.6",
 		"@types/three": "^0.150.0",
 		"@vitejs/plugin-react-swc": "^3.0.0",
+		"satori": "^0.10.13",
+		"sharp": "^0.33.3",
 		"typescript": "^5.2.2",
 		"vite": "^4.2.0"
 	}
