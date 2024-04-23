@@ -40,31 +40,31 @@ const creations = defineCollection({
 		released: rssSchema.shape.pubDate,
 	}),
 });
-const tools = defineCollection({
-	type: "content",
-	schema: z
-		.object({
-			thumbnail: z.string(),
-			svgThumbnail: z.boolean().optional(),
-			externalLinks: z
-				.object({
-					url: z.string().url(),
-					title: z.string(),
-				})
-				.array()
-				.optional(),
-			externalLink: z
-				.object({
-					url: z.string().url(),
-					title: z.string(),
-				})
-				.optional(),
-		})
-		.strict(),
-});
+// const tools = defineCollection({
+// 	type: "content",
+// 	schema: z
+// 		.object({
+// 			thumbnail: z.string(),
+// 			svgThumbnail: z.boolean().optional(),
+// 			externalLinks: z
+// 				.object({
+// 					url: z.string().url(),
+// 					title: z.string(),
+// 				})
+// 				.array()
+// 				.optional(),
+// 			externalLink: z
+// 				.object({
+// 					url: z.string().url(),
+// 					title: z.string(),
+// 				})
+// 				.optional(),
+// 		})
+// 		.strict(),
+// });
 export const collections = {
 	posts,
 	socials,
 	creations,
-	tools,
+	// tools,
 };
