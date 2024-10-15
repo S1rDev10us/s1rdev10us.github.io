@@ -1,5 +1,7 @@
 ---
 import "../assets/global.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { ViewTransitions } from "astro:transitions";
 import logo from "../assets/logo.png";
 
@@ -42,26 +44,9 @@ const online = import.meta.env.PROD || isOnline();
 			);
 		</script>
 		<!-- Default bootstrap -->
-		<link
-			rel="stylesheet"
-			href={online
-				? "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-				: "/node_modules/bootstrap/dist/css/bootstrap.css"}
-			crossorigin={online ? "anonymous" : undefined}
-		/>
-		<link
-			rel="stylesheet"
-			href={online
-				? "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-				: "/node_modules/bootstrap-icons/font/bootstrap-icons.css"}
-			crossorigin={online ? "anonymous" : undefined}
-		/>
 		<script
 			is:inline
-			src={online
-				? "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-				: "/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"}
-			crossorigin={online ? "anonymous" : undefined}
+			src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 		></script>
 		<script src="../scripts/tooltips.ts"></script>
 
