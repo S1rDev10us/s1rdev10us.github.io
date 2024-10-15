@@ -5,13 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"dev": "npm run serve",
-		"serve": "astro dev",
+		"serve": "npx astro dev",
 		"start": "npm run serve",
-		"build": "npm run sync && tsc && astro build",
-		"check": "astro check",
-		"sync": "astro sync",
-		"preview": "astro preview",
-		"astro": "astro"
+		"build": "npm run sync && tsc && npx astro build",
+		"check": "npx astro check",
+		"sync": "npx astro sync",
+		"preview": "npx astro preview",
+		"astro": "npx astro"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^1.1.3",
