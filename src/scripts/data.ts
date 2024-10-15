@@ -163,7 +163,7 @@ export async function getStats(): Promise<{ value: any; name: string }[]> {
 			name: "Videos",
 		},
 		{
-			value: 1,
+			value: 2,
 			name: "Subscribers",
 		},
 		{
