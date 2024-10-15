@@ -1,4 +1,5 @@
 ---
+import "../assets/global.scss";
 import { ViewTransitions } from "astro:transitions";
 import logo from "../assets/logo.png";
 
@@ -54,10 +55,6 @@ const online = import.meta.env.PROD || isOnline();
 				? "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
 				: "/node_modules/bootstrap-icons/font/bootstrap-icons.css"}
 			crossorigin={online ? "anonymous" : undefined}
-		/>
-		<link
-			rel="stylesheet"
-			href="/global.css"
 		/>
 		<script
 			is:inline
