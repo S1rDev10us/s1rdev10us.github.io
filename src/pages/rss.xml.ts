@@ -3,7 +3,7 @@ import type { APIContext } from "astro";
 import { name } from "../scripts/data";
 import { getCollection } from "astro:content";
 
-export async function get(context: APIContext) {
+export async function GET(context: APIContext) {
 	const posts = await getCollection("posts");
 	return rss({
 		title: `${name}'s Posts`,
