@@ -35,42 +35,6 @@ export const themes: { icon: iconName; id: Theme; desc: string }[] = [
 	},
 ];
 
-export const creativeMediums: {
-	tabName: string;
-	id: string;
-	bodyText: string;
-}[] = [
-	{
-		tabName: "Game Dev",
-		id: "games",
-		bodyText:
-			"This is my passion and my main job which is mainly funded by my devlogs and patreon",
-	},
-	{
-		tabName: "Youtube Devlogs",
-		id: "videos",
-		bodyText:
-			"This helps me visualize my ideas, fund my game creation and show my work to the world",
-	},
-	{
-		tabName: "Pixel art",
-		id: "pixel-art",
-		bodyText: "I do art both for games and for fun ",
-	},
-	{
-		tabName: "Website Design",
-		id: "websites",
-		bodyText:
-			"I created this website myself, using Astro and bootstrap.\nIt went through a few iterations, including a basic design using no libraries and a more advanced design using react.",
-	},
-	{
-		tabName: "Discord Bots",
-		id: "discord-bots",
-		bodyText:
-			"I have created numerous discord bots over the years for various purposes, mostly with discord.js and node.",
-	},
-];
-
 export const name = "S1rDev10us";
 
 export const socials: {
