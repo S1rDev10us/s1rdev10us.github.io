@@ -5,13 +5,10 @@ import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { ViewTransitions } from "astro:transitions";
 import logo from "../assets/logo.png";
 
-import { isOnline } from "../scripts/data";
-
 export interface Props {
 	theme: "dark" | "light";
 }
 const { theme } = Astro.props;
-const online = import.meta.env.PROD || isOnline();
 ---
 
 <!DOCTYPE html>
@@ -44,9 +41,7 @@ const online = import.meta.env.PROD || isOnline();
 			);
 		</script>
 		<!-- Default bootstrap -->
-		<script
-			is:inline
-			src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+		<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
 		></script>
 		<script src="../scripts/tooltips.ts"></script>
 
@@ -85,7 +80,7 @@ const online = import.meta.env.PROD || isOnline();
 	</head>
 	<body>
 		{
-			import.meta.env.DEV ? (
+			import.meta.env.DEV && (
 				<div
 					class="position-fixed top-0 end-0 m-0"
 					style="z-index: 10000; width: fit-content; padding-right: 201px;"
@@ -106,7 +101,7 @@ const online = import.meta.env.PROD || isOnline();
 						</text>
 					</svg>
 				</div>
-			) : undefined
+			)
 		}
 		<!-- Before content slot -->
 		<slot name="before-content" />
