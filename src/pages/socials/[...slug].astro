@@ -4,12 +4,14 @@ import Overlay from "../../layouts/Overlay.astro";
 
 export async function getStaticPaths() {
 	const socials = await getCollection("socials");
-	return socials.map((social) => ({
-		params: {
-			slug: social.slug,
-		},
-		props: { social },
-	}));
+	return socials
+		.filter((social) => social.slug.search("test") == -1)
+		.map((social) => ({
+			params: {
+				slug: social.slug,
+			},
+			props: { social },
+		}));
 }
 export interface Props {
 	social: CollectionEntry<"socials">;
