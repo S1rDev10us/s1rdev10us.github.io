@@ -27,6 +27,7 @@ const { theme } = Astro.props;
 			media="(prefers-color-scheme: dark)"
 		/>
 		<script>
+			import "bootstrap";
 			console.log(
 				"%cHELLO THERE",
 				"background: black; color: red; font-size:4.5rem;"
@@ -40,10 +41,6 @@ const { theme } = Astro.props;
 				"background: black; color: green; font-size:1rem;"
 			);
 		</script>
-		<!-- Default bootstrap -->
-		<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
-		></script>
-		<script src="../scripts/tooltips.ts"></script>
 
 		<link
 			rel="preload"
