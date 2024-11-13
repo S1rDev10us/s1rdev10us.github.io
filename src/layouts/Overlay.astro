@@ -38,13 +38,15 @@ const title =
 	/>
 
 	<div
-		class="container mb-auto"
+		class="container"
 		transition:animate="slide"
 	>
 		{/*style="min-height: calc( 100svh - ( 57px + 64px + 1px ) );"*/}
 		<div class="row align-items-start">
 			<div class="col">
-				<main class:list={["px-3", "py-2"]}>
+				<main
+					class:list={["px-3", "py-2", "text-center", "d-flex flex-column"]}
+				>
 					<slot />
 				</main>
 			</div>
