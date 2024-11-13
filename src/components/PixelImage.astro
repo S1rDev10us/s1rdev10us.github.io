@@ -7,11 +7,11 @@ export interface Props {
 }
 const { src, style } = Astro.props;
 ---
-
-<script src="../scripts/components/PixelImage.ts"></script>
-<canvas
-	is="pixel-image"
-	data-src={src}
-	style={style}
-	class:list={[Astro.props["class:list"]]}
-></canvas>
+<img {src} {style} class:list={[Astro.props["class:list"]]}>
+<style>
+	img {
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: crisp-edges;
+	}
+</style>
