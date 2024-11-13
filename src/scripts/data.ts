@@ -99,12 +99,12 @@ export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
 			return v;
 		})
 		.filter((v) => !v.data.draft || (import.meta.env.DEV && draftsInDevMode))
-		.sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+		.sort((a, b) => +(b.data.pubDate ?? 0) - +(a.data.pubDate ?? 0));
 	return posts;
 }
 export async function getCreations(): Promise<CollectionEntry<"creations">[]> {
 	const creations = (await getCollection("creations")).sort(
-		(a, b) => +b.data.released - +a.data.released
+		(a, b) => +(b.data.released ?? 0) - +(a.data.released ?? 0)
 	);
 	return creations;
 }

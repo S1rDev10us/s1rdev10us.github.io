@@ -11,13 +11,17 @@ export async function GET(context: APIContext) {
 		site: context.site + "",
 		customData: "<language>en-uk</language",
 		items: posts
-			.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+			.sort(
+				(a, b) =>
+					(b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0)
+			)
 			.map((post) => ({
 				...post.data,
 				customData:
 					(post.data.customData ?? "") +
 					`<editDate>${
-						post.data.editDate?.toUTCString() ?? post.data.pubDate.toUTCString()
+						post.data.editDate?.toUTCString() ??
+						post.data.pubDate?.toUTCString()
 					}</editDate>`,
 				link: `/posts/${post.slug}`,
 			}))

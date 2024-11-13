@@ -9,11 +9,10 @@ const preTransformPostScheme = rssSchema.extend({
 	draft: z.boolean().optional(),
 });
 export const postScheme = preTransformPostScheme.transform((val) => {
-	return preTransformPostScheme
-		.extend({
-			editDate: preTransformPostScheme.shape.editDate.default(val.pubDate),
-		})
-		.parse(val);
+	if (!val.editDate) {
+		val.editDate = val.pubDate;
+	}
+	return val;
 });
 
 const posts = defineCollection({

@@ -15,12 +15,12 @@ type BP<T extends Record<string, any>> =
 	| MarkdownLayoutProps<T>
 	| MDXLayoutProps<T>;
 
-export type Props = BP<BaseProps | z.input<typeof postScheme>>;
+export type Props = BP<BaseProps | z.output<typeof postScheme>>;
 
 const props = Astro.props;
 const title =
 	(
-		("title" in props ? props.title : props.frontmatter.title) ??
+		("title" in props ? props.title : props?.frontmatter?.title) ??
 		"Title missing, please contact owner"
 	).trim() + ` | ${name}`;
 ---
