@@ -11,7 +11,7 @@ export interface Props {
 const { theme } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html
 	lang="en-UK"
 	data-bs-theme={theme}
@@ -30,15 +30,15 @@ const { theme } = Astro.props;
 			import "bootstrap";
 			console.log(
 				"%cHELLO THERE",
-				"background: black; color: red; font-size:4.5rem;"
+				"background: black; color: red; font-size:4.5rem;",
 			);
 			console.log(
 				"%cSo, you fancied having a look at my website",
-				"background: black; color: red; font-size:2rem;"
+				"background: black; color: red; font-size:2rem;",
 			);
 			console.log(
 				"%cFair enough I guess\nIf you find any bugs could you report them?",
-				"background: black; color: green; font-size:1rem;"
+				"background: black; color: green; font-size:1rem;",
 			);
 		</script>
 

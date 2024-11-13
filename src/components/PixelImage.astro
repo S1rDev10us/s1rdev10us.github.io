@@ -7,7 +7,12 @@ export interface Props {
 }
 const { src, style } = Astro.props;
 ---
-<img {src} {style} class:list={[Astro.props["class:list"]]}>
+
+<img
+	{src}
+	{style}
+	class:list={[Astro.props["class:list"]]}
+/>
 <style>
 	img {
 		image-rendering: pixelated;

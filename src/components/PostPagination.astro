@@ -17,7 +17,7 @@ if (pageNumber < directionPages.before + 1) {
 if (directionPages.after + pageNumber >= numberOfPostPages) {
 	directionPages.after = Math.min(
 		numberOfPostPages - pageNumber,
-		directionPages.after
+		directionPages.after,
 	);
 }
 

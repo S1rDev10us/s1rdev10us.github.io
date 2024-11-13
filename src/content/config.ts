@@ -6,6 +6,7 @@ const preTransformPostScheme = rssSchema.extend({
 	isVideo: z.boolean().default(false),
 	thumbnail: z.string().url().optional(),
 	editDate: rssSchema.shape.pubDate.optional(),
+	draft: z.boolean().optional(),
 });
 export const postScheme = preTransformPostScheme.transform((val) => {
 	return preTransformPostScheme

@@ -3,5 +3,16 @@
 	"useTabs": true,
 	"semi": true,
 	"singleQuote": false,
-	"singleAttributePerLine": true
+	"singleAttributePerLine": true,
+	"plugins": [
+		"prettier-plugin-astro"
+	],
+	"overrides": [
+		{
+			"files": "*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		}
+	]
 }

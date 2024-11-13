@@ -23,7 +23,7 @@ const pageNumber = +(Astro.params.pageNumber + "");
 const postsStartNumber = (pageNumber - 1) * postListNumber;
 const posts = (await getPosts()).slice(
 	postsStartNumber,
-	postsStartNumber + postListNumber
+	postsStartNumber + postListNumber,
 );
 ---
 
