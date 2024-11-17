@@ -1,7 +1,7 @@
 ---
 title: "My website releases!"
-pubDate: 1698241103423
-editDate: 1699806027686
+pubDate: 2023-10-25
+editDate: 2023-11-12
 draft: false
 description: "I have finally reached the end of a long journey to develop my website"
 ---
