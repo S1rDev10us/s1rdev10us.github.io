@@ -3,6 +3,8 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { remarkReadingTime } from "./reading-time";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +15,7 @@ export default defineConfig({
 		"/posts/": "/posts/1",
 	},
 	markdown: {
-		remarkPlugins: [remarkReadingTime],
+		remarkPlugins: [remarkReadingTime, remarkMath],
+		rehypePlugins: [rehypeKatex],
 	},
 });
