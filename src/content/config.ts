@@ -2,18 +2,19 @@ import { rssSchema } from "@astrojs/rss";
 import { defineCollection } from "astro:content";
 import { z } from "astro:content";
 
-const preTransformPostScheme = rssSchema.extend({
-	isVideo: z.boolean().default(false),
-	thumbnail: z.string().url().optional(),
-	editDate: rssSchema.shape.pubDate.optional(),
-	draft: z.boolean().optional(),
-});
-export const postScheme = preTransformPostScheme.transform((val) => {
-	if (!val.editDate) {
-		val.editDate = val.pubDate;
-	}
-	return val;
-});
+export const postScheme = rssSchema
+	.extend({
+		isVideo: z.boolean().default(false),
+		thumbnail: z.string().url().optional(),
+		editDate: rssSchema.shape.pubDate.optional(),
+		draft: z.boolean().optional(),
+	})
+	.transform((val) => {
+		if (!val.editDate) {
+			val.editDate = val.pubDate;
+		}
+		return val;
+	});
 
 const posts = defineCollection({
 	type: "content",
