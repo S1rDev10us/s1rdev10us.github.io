@@ -2,7 +2,7 @@
 import { socials } from "../scripts/data";
 import Icon from "./Icon";
 import { execSync } from "child_process";
-let hash = execSync("git rev-parse --short HEAD") + "";
+let hash = execSync("git rev-parse HEAD") + "";
 let date =
 	new Date().getUTCFullYear() +
 	"/" +
@@ -39,7 +39,8 @@ let date =
 					}
 					<li class="nav-item">
 						<div class="nav-link">
-							{hash}&nbsp;|&nbsp;{date}
+							<span title={"Commit: " + hash}>{hash.slice(0, 8)}</span
+							>&nbsp;|&nbsp;{date}
 						</div>
 					</li>
 
