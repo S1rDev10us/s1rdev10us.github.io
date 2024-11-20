@@ -11,6 +11,8 @@ export default defineConfig({
 	integrations: [react(), mdx(), sitemap()],
 	site: "https://s1rdev10us.github.io",
 	redirects: {
+		"/post": "/posts/1",
+		"/post/": "/posts/1",
 		"/posts": "/posts/1",
 		"/posts/": "/posts/1",
 	},

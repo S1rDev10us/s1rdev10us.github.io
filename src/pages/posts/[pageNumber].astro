@@ -27,6 +27,26 @@ const posts = (await getPosts()).slice(
 );
 ---
 
+<!--
+		I'm actually going to leave this code here cause it's really cool and I may want to use it in the future (knowing me I will almost certainly never use it though lol)
+		<video
+		id="scroll-video"
+		style="position: fixed; width:100vw;left: 0; height:100%; object-fit: cover; top:0;"
+		src={Vid}
+	></video>
+	<script>
+		const repeats = 1;
+		const vid = document.getElementById("scroll-video");
+		window.addEventListener("scroll", function () {
+			var h = document.documentElement,
+				b = document.body,
+				st = "scrollTop",
+				sh = "scrollHeight";
+			const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
+			console.log((percent * repeats) % 1);
+			vid.currentTime = vid.duration * ((percent * repeats) % 1);
+		});
+	</script> -->
 <Overlay title="Feed">
 	<h1 class="text-center">Posts</h1>
 	<br />
