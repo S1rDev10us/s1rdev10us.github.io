@@ -5,17 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { ViewTransitions } from "astro:transitions";
 import logo from "../assets/logo.png";
-
-export interface Props {
-	theme: "dark" | "light";
-}
-const { theme } = Astro.props;
 ---
 
 <!doctype html>
 <html
-	lang="en-UK"
-	data-bs-theme={theme}
+	lang="en-GB"
+	data-bs-theme="dark"
 >
 	<head>
 		<meta charset="UTF-8" />
