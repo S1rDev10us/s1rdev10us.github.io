@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Overlay.astro
+layout: ../layouts/MdOverlay.astro
 title: "Cookies"
 ---
 

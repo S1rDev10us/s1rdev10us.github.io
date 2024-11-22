@@ -1,0 +1,12 @@
+---
+import { MarkdownLayoutProps } from "astro";
+import type { Props as overlayProps } from "./Overlay.astro";
+import Overlay from "./Overlay.astro";
+
+export type Props = MarkdownLayoutProps<overlayProps>;
+const props = Astro.props.frontmatter;
+---
+
+<Overlay {...props}>
+	<slot />
+</Overlay>
