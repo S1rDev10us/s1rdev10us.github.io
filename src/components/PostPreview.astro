@@ -84,20 +84,16 @@ const { data, slug } = Astro.props;
 				{
 					+data.editDate != +data.pubDate ? (
 						<div class="row border-bottom">
-							<div class="col">
-								<Countdown
-									pastText="Edited"
-									futureText="Will be edited"
-									date={data.editDate}
-								/>
-							</div>
+							<Countdown
+								pastText="Edited"
+								futureText="Will be edited"
+								date={data.editDate}
+							/>
 						</div>
 					) : undefined
 				}
 				<div class="row">
-					<div class="col">
-						<Countdown date={data.pubDate} />
-					</div>
+					<Countdown date={data.pubDate} />
 				</div>
 			</div>
 			<div class="col-auto border-start">
