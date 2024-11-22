@@ -21,7 +21,10 @@ if (isNaN(releaseDate.getTime()))
 	throw Error(`Post "${post.id}" does not have a valid date`);
 ---
 
-<Overlay title={title}>
+<Overlay
+	title={title}
+	isArticle
+>
 	<div class="text-start">
 		<h1>{title}</h1>
 		<i>

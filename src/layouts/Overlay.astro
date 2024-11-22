@@ -6,6 +6,7 @@ import { name } from "../scripts/data";
 
 export interface Props {
 	title: string;
+	isArticle?: boolean;
 }
 
 const props = Astro.props;
@@ -27,21 +28,27 @@ if (!(title && title != "")) throw new Error("Page must have a title");
 		slot="before-content"
 	/>
 
-	<div
-		class="container"
+	<main
+		class:list={[
+			"px-3",
+			"py-2",
+			"text-start",
+			"d-flex flex-column",
+			"container",
+		]}
 		transition:animate="slide"
+		transition:name="content"
 	>
-		{/*style="min-height: calc( 100svh - ( 57px + 64px + 1px ) );"*/}
-		<div class="row align-items-start">
-			<div class="col">
-				<main
-					class:list={["px-3", "py-2", "text-center", "d-flex flex-column"]}
-				>
+		{
+			props.isArticle ? (
+				<article>
 					<slot />
-				</main>
-			</div>
-		</div>
-	</div>
+				</article>
+			) : (
+				<slot />
+			)
+		}
+	</main>
 
 	<Footer
 		slot="after-content"
