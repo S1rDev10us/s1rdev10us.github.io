@@ -11,8 +11,6 @@ externalLinks:
 released: 2023-08-15
 ---
 
-# Cuddly Computing Machine
-
 <sup>(This project is no longer being maintained)</sup>
 <br/>
 This was a small text-based game that a few friends and I made using python.

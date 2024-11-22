@@ -7,8 +7,6 @@ externalLinks:
 released: 2023-08-16
 ---
 
-# This website
-
 This was created using astro and bootstrap
 
 I created it to be a central hub for all of my games development and social media

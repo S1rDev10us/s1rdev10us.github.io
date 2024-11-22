@@ -6,6 +6,6 @@ export const remarkReadingTime: RemarkPlugin = function () {
 		const textOnPage = toString(tree);
 		const readingTime = getReadingTime(textOnPage);
 
-		(<any>data.astro).frontmatter.minutesRead = readingTime.text;
+		(<any>data.astro).frontmatter.minutesRead = readingTime;
 	};
 };

@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Overlay from "./Overlay.astro";
+import { formatDate } from "../scripts/lib";
+
+export interface Props {
+	post: CollectionEntry<"creations" | "posts">;
+}
+const { post } = Astro.props;
+
+const title = post.data.title;
+const { Content, remarkPluginFrontmatter: frontmatter } = await post.render();
+
+if (!title) throw Error(`Post "${post.id}" does not have a title defined`);
+
+const { minutesRead: readtime } = frontmatter;
+
+const releaseDate = new Date(frontmatter.released ?? frontmatter.pubDate);
+
+if (isNaN(releaseDate.getTime()))
+	throw Error(`Post "${post.id}" does not have a valid date`);
+---
+
+<Overlay title={title}>
+	<div class="text-start">
+		<h1>{title}</h1>
+		<i>
+			Released on {formatDate(releaseDate)}, {readtime.words} words, {
+				readtime.text
+			} time
+		</i>
+		<br />
+		<br />
+		<Content />
+	</div>
+</Overlay>

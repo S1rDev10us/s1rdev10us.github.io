@@ -6,8 +6,6 @@ draft: false
 description: "I have finally reached the end of a long journey to develop my website"
 ---
 
-# My website releases!
-
 ### My plans for this website
 
 Since I was fairly young, I have really enjoyed video games. This isn't especially uncommon but that, mixed with my passion for coding, has for quite a long time made me decide that I want to go into games development.
