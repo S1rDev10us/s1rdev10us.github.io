@@ -20,5 +20,5 @@ const { date, style, futureText, pastText } = Astro.props;
 	data-future-text={futureText}
 	data-past-text={pastText}
 >
-	{stringFromDate(new Date(date), futureText, pastText)}&nbsp;
+	{stringFromDate(new Date(date), pastText, futureText)}&nbsp;
 </time-counter>
