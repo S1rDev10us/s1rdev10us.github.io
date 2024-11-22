@@ -1,0 +1,62 @@
+---
+import { capitaliseWords } from "@scripts/lib";
+---
+
+<nav
+	aria-label="breadcrumb"
+	class="col-auto flex-row"
+>
+	<ol
+		class="breadcrumb my-0 ps-2 py-2"
+		aria-label="breadcrumb"
+		style="flex-wrap: nowrap;"
+	>
+		{
+			Astro.url.pathname
+				.split("/")
+				.filter((v) => v.trim() != "")
+				.map((v, i, a) => {
+					if (v == "") return undefined;
+					let u = "";
+					for (const path of a.slice(0, i + 1)) {
+						if (path == "") continue;
+						u += "/" + path;
+					}
+					const active = i != a.length - 1;
+					switch (u) {
+						case "/post":
+							u = "/posts/1/";
+							break;
+						case "/posts":
+							u = "/posts/1/";
+							break;
+						default:
+							break;
+					}
+					return (
+						<li
+							class:list={[
+								"breadcrumb-item",
+								"pe-2",
+								{
+									active,
+								},
+							]}
+							style="flex-wrap: nowrap; display: flex;"
+						>
+							{!active ? (
+								<div class="link-secondary">{capitaliseWords(v)}</div>
+							) : (
+								<a
+									class="link-body-emphasis"
+									href={u}
+								>
+									{capitaliseWords(v)}
+								</a>
+							)}
+						</li>
+					);
+				})
+		}
+	</ol>
+</nav>
