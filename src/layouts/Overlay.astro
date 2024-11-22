@@ -1,33 +1,23 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import type { MarkdownLayoutProps, MDXLayoutProps } from "astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import type { postScheme } from "../content/config";
-import type { z } from "astro:content";
 import { name } from "../scripts/data";
 
-interface BaseProps {
+export interface Props {
 	title: string;
 }
-type BP<T extends Record<string, any>> =
-	| T
-	| MarkdownLayoutProps<T>
-	| MDXLayoutProps<T>;
-
-export type Props = BP<BaseProps | z.output<typeof postScheme>>;
 
 const props = Astro.props;
-const title =
-	(
-		("title" in props ? props.title : props?.frontmatter?.title) ??
-		"Title missing, please contact owner"
-	).trim() + ` | ${name}`;
+
+const title = props.title.trim();
+
+if (!(title && title != "")) throw new Error("Page must have a title");
 ---
 
 <BaseLayout>
 	<title slot="head">
-		{title}
+		{title} | {name}
 	</title>
 
 	<Navbar
