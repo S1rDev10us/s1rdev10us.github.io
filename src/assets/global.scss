@@ -44,3 +44,7 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+.remove-before::before,
+.remove-after::after {
+	display: none !important;
+}
