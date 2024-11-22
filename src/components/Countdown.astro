@@ -1,5 +1,7 @@
 ---
 import type classNames from "classnames";
+import { stringFromDate } from "../scripts/components/TimeCounter";
+
 export interface Props {
 	date: Date | number;
 	futureText?: string;
@@ -18,5 +20,5 @@ const { date, style, futureText, pastText } = Astro.props;
 	data-future-text={futureText}
 	data-past-text={pastText}
 >
-	&nbsp;
+	{stringFromDate(new Date(date), futureText, pastText)}&nbsp;
 </time-counter>
