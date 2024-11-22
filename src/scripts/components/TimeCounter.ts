@@ -7,7 +7,10 @@ export function stringFromDate(
 	let onServer = import.meta.env.SSR;
 	let momentDate = moment(date);
 
-	return `${momentDate.isBefore() ? pastText : futureText}\xa0${
+	let dateInFuture = moment().isBefore(momentDate);
+	let prefix = dateInFuture ? futureText : pastText;
+
+	return `${prefix}\xa0${
 		onServer ? "~" : ""
 	}${momentDate.fromNow().replaceAll(" ", "\xa0")}`;
 }
