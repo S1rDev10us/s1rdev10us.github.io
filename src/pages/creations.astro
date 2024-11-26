@@ -7,7 +7,7 @@ const creations = await getCreations();
 
 <Overlay title="Creations">
 	<div
-		class="d-flex text-center align-items-center justify-content-center gap-2"
+		class="d-flex flex-wrap text-center align-items-center justify-content-center gap-2"
 	>
 		{creations.map((v) => <CreationPreview {...v} />)}
 	</div>
