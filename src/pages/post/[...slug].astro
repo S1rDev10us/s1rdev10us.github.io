@@ -17,4 +17,7 @@ export interface Props {
 }
 ---
 
-<PostLayout post={Astro.props.post} />
+<PostLayout
+	collection="posts"
+	post={Astro.props.post}
+/>

@@ -2,11 +2,17 @@ import { rssSchema } from "@astrojs/rss";
 import { defineCollection } from "astro:content";
 import { z } from "astro:content";
 
+export const dateSchema = z.coerce
+	.date()
+	.refine((val) => !isNaN(val.getUTCMilliseconds()), {
+		message: "Date must be valid and not NaN",
+	});
+
 export const postScheme = rssSchema
 	.extend({
 		isVideo: z.boolean().default(false),
 		thumbnail: z.string().url().optional(),
-		editDate: rssSchema.shape.pubDate.optional(),
+		editDate: dateSchema.optional(),
 		draft: z.boolean().optional(),
 	})
 	.transform((val) => {
@@ -38,7 +44,9 @@ const creations = defineCollection({
 			})
 			.array()
 			.optional(),
-		released: rssSchema.shape.pubDate,
+		released: dateSchema,
+		developedStart: dateSchema,
+		developedEnd: dateSchema.optional(),
 	}),
 });
 // const tools = defineCollection({

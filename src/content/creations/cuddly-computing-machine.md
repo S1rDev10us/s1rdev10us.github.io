@@ -9,6 +9,8 @@ externalLinks:
   - url: "https://github.com/S1rDev10us/Python-CuddlyComputingGameData"
     title: "Examples"
 released: 2023-08-15
+developedStart: 2022-5-12
+developedEnd: 2022-10-31
 ---
 
 <sup>(This project is no longer being maintained)</sup>

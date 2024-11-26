@@ -5,9 +5,10 @@ externalLinks:
   - url: "/post/blog/website-release"
     title: "Release notes"
 released: 2023-08-16
+developedStart: 2023-4-1
 ---
 
-This was created using astro and bootstrap
+This version of it was created using astro and bootstrap
 
 I created it to be a central hub for all of my games development and social media
 
