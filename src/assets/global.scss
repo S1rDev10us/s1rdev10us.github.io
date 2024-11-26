@@ -48,3 +48,9 @@ body {
 .remove-after::after {
 	display: none !important;
 }
+
+.astro-code {
+	display: inline-block;
+	padding: 1rem;
+	border-radius: 1rem;
+}
