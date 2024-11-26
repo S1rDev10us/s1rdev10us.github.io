@@ -2,11 +2,13 @@
 import type { CollectionEntry } from "astro:content";
 import Icon from "./Icon";
 import Countdown from "./Countdown.astro";
-import { isOnline } from "../scripts/data";
+import { isOnline } from "@scripts/data";
+import { formatDate, defaultReleaseDate } from "@scripts/lib";
 
 export type Props = CollectionEntry<"posts">;
 
-const { data, slug } = Astro.props;
+const { data, slug, id } = Astro.props;
+const pubDate = defaultReleaseDate(data.pubDate, "posts", id);
 ---
 
 <div
@@ -82,7 +84,7 @@ const { data, slug } = Astro.props;
 		<div class="row align-items-center">
 			<div class="col border-end">
 				{
-					+data.editDate != +data.pubDate ? (
+					data.editDate && data.editDate.getTime() != pubDate.getTime() ? (
 						<div class="row border-bottom">
 							<Countdown
 								pastText="Edited"
@@ -93,11 +95,11 @@ const { data, slug } = Astro.props;
 					) : undefined
 				}
 				<div class="row">
-					<Countdown date={data.pubDate} />
+					<Countdown date={pubDate} />
 				</div>
 			</div>
 			<div class="col-auto border-start">
-				{Intl.DateTimeFormat("en-UK").format(data.pubDate)}
+				{formatDate(pubDate)}
 			</div>
 		</div>
 	</div>

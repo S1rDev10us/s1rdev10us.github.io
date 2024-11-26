@@ -2,8 +2,12 @@
 import type { CollectionEntry } from "astro:content";
 import Icon from "./Icon";
 import Countdown from "./Countdown.astro";
+import { defaultReleaseDate } from "@scripts/lib";
+
 export type Props = CollectionEntry<"creations">;
-const { data, slug } = Astro.props;
+const { data, slug, id } = Astro.props;
+
+const dateReleased = defaultReleaseDate(data.released, "creations", id);
 ---
 
 <div
@@ -48,11 +52,11 @@ const { data, slug } = Astro.props;
 		</div>
 	</div>
 	{
-		data.released ? (
+		dateReleased ? (
 			<div class="card-footer text-center text-body-secondary">
 				<div class="row">
 					<div class="col">
-						<Countdown date={+data.released} />
+						<Countdown date={dateReleased} />
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Theme } from "./themes";
 import os from "os";
-import { range } from "./lib";
+import { range, defaultReleaseDate } from "./lib";
 import type { iconName } from "../components/Icon";
 
 export async function getPostCollectionLength() {
@@ -85,7 +85,7 @@ export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
 					id: "blog/website-release.md",
 					render,
 					slug: "blog/website-release",
-				})
+				}),
 			);
 	} else {
 		posts = await getCollection("posts");
@@ -104,7 +104,9 @@ export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
 }
 export async function getCreations(): Promise<CollectionEntry<"creations">[]> {
 	const creations = (await getCollection("creations")).sort(
-		(a, b) => +(b.data.released ?? 0) - +(a.data.released ?? 0)
+		(a, b) =>
+			+defaultReleaseDate(b.data.released, "creations", b.id) -
+			+defaultReleaseDate(a.data.released, "creations", a.id),
 	);
 	return creations;
 }

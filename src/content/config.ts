@@ -44,7 +44,7 @@ const creations = defineCollection({
 			})
 			.array()
 			.optional(),
-		released: dateSchema,
+		released: dateSchema.optional(),
 		developedStart: dateSchema,
 		developedEnd: dateSchema.optional(),
 	}),

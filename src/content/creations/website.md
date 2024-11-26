@@ -4,7 +4,7 @@ description: "The website you are looking at right now!"
 externalLinks:
   - url: "/post/blog/website-release"
     title: "Release notes"
-released: 2023-08-16
+released: 2023-9-10
 developedStart: 2023-4-1
 ---
 

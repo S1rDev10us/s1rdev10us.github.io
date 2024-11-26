@@ -1,3 +1,5 @@
+import { execSync } from "child_process";
+
 function capitaliseWith(str: string, splitter: string) {
 	return str
 		.split(splitter)
@@ -36,4 +38,23 @@ export function formatDate(date: Date) {
 		date.getUTCMonth() + 1,
 		date.getUTCDate()
 	].join(separator);
+}
+
+export function defaultReleaseDate(
+	date: any | undefined,
+	collections: string,
+	id: string,
+): Date {
+	if (date) return new Date(date);
+	return fileCommitedOn(`src/content/${collections}/${id}`);
+}
+export function fileCommitedOn(fileLoc: string): Date {
+	const command = `git log --diff-filter=A -1 --follow --format=%ad --date default -- "${fileLoc}"`;
+	const output = execSync(command).toString();
+	console.log(command);
+	console.log(output);
+	if (output.trim() == "") {
+		return new Date();
+	}
+	return new Date(output);
 }

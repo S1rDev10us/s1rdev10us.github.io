@@ -2,6 +2,7 @@ import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { name } from "../scripts/data";
 import { getCollection } from "astro:content";
+import { defaultReleaseDate } from "@scripts/lib";
 
 export async function GET(context: APIContext) {
 	const posts = await getCollection("posts");
@@ -13,7 +14,8 @@ export async function GET(context: APIContext) {
 		items: posts
 			.sort(
 				(a, b) =>
-					(b.data.pubDate?.getTime() ?? 0) - (a.data.pubDate?.getTime() ?? 0)
+					defaultReleaseDate(b.data.pubDate, "posts", b.id).getTime() -
+					defaultReleaseDate(a.data.pubDate, "posts", b.id).getTime(),
 			)
 			.map((post) => ({
 				...post.data,
@@ -21,7 +23,7 @@ export async function GET(context: APIContext) {
 					(post.data.customData ?? "") +
 					`<editDate>${
 						post.data.editDate?.toUTCString() ??
-						post.data.pubDate?.toUTCString()
+						defaultReleaseDate(post.data.pubDate, "posts", post.id).getTime()
 					}</editDate>`,
 				link: `/posts/${post.slug}`,
 			}))

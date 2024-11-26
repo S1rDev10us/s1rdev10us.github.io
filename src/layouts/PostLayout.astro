@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Overlay from "./Overlay.astro";
 import { formatDate } from "../scripts/lib";
+import { defaultReleaseDate } from "@scripts/lib";
 
 export interface Props<TCollection extends "creations" | "posts"> {
 	collection: TCollection;
@@ -16,8 +17,11 @@ if (!title) throw Error(`Post "${post.id}" does not have a title defined`);
 
 const { minutesRead: readtime } = frontmatter;
 
-const releaseDate = new Date(frontmatter.released ?? frontmatter.pubDate);
-
+const releaseDate = defaultReleaseDate(
+	frontmatter.released ?? frontmatter.pubDate,
+	collection,
+	post.id,
+);
 if (isNaN(releaseDate.getTime()))
 	throw Error(`Post "${post.id}" does not have a valid date`);
 

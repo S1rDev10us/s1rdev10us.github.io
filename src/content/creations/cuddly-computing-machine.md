@@ -8,7 +8,7 @@ externalLinks:
     title: "Source Code"
   - url: "https://github.com/S1rDev10us/Python-CuddlyComputingGameData"
     title: "Examples"
-released: 2023-08-15
+released: 2023-09-10
 developedStart: 2022-5-12
 developedEnd: 2022-10-31
 ---
