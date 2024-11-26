@@ -8,7 +8,7 @@ function capitaliseWith(str: string, splitter: string) {
 					: word.toUpperCase()
 				: null,
 		)
-		?.join(splitter);
+		.join(splitter);
 }
 export function capitaliseWords(
 	str: string,
@@ -33,7 +33,7 @@ export function formatDate(date: Date) {
 	// prettier-ignore
 	return [
 		date.getUTCFullYear(),
-		date.getUTCMonth(),
+		date.getUTCMonth() + 1,
 		date.getUTCDate()
 	].join(separator);
 }
