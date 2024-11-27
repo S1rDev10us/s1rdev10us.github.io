@@ -48,11 +48,10 @@ export function defaultReleaseDate(
 	if (date) return new Date(date);
 	return fileCommitedOn(`src/content/${collections}/${id}`);
 }
+
 export function fileCommitedOn(fileLoc: string): Date {
 	const command = `git log --diff-filter=A -1 --follow --format=%ad --date default -- "${fileLoc}"`;
 	const output = execSync(command).toString();
-	console.log(command);
-	console.log(output);
 	if (output.trim() == "") {
 		return new Date();
 	}
