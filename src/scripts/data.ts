@@ -12,7 +12,7 @@ export const paths: { name: string; path: string }[] = [
 	{ name: "About\xa0me", path: "/" },
 	{ name: "My\xa0creations", path: "/creations" },
 	{ name: "Posts", path: "/posts/1/" },
-	{ name: "Respect", path: "/respect" },
+	// { name: "Respect", path: "/respect" },
 
 	// { name: "Tools\xa0I\xa0Use", path: "/tools" },// I'm not sure what I want to do with this page atm
 ];
